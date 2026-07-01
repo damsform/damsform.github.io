@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Trending · 2026-07-01</title>
+<title>GitHub 热门项目 · 2026-07-01</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -158,14 +158,14 @@ h1 {
 <body>
 <div class="container">
   <header>
-    <h1>GitHub Trending</h1>
+    <h1>GitHub 热门项目</h1>
     <p class="date">2026-07-01</p>
   </header>
   
   <nav class="tabs">
-    <button class="tab active" data-range="daily">Daily</button>
-    <button class="tab" data-range="weekly">Weekly</button>
-    <button class="tab" data-range="monthly">Monthly</button>
+    <button class="tab active" data-range="daily">今日</button>
+    <button class="tab" data-range="weekly">本周</button>
+    <button class="tab" data-range="monthly">本月</button>
   </nav>
 
   <div id="daily" class="list active"></div>
@@ -264,7 +264,7 @@ const data = [
 {"source":"Go","timeRange":"monthly","owner":"maximhq","name":"bifrost","desc":"Fastest enterprise AI gateway.","lang":"Go","stars":6166,"forks":827,"starsInRange":794,"url":"https://github.com/maximhq/bifrost"}
 ];
 
-const rangeLabels = { daily: 'today', weekly: 'this week', monthly: 'this month' };
+const rangeLabels = { daily: '今日', weekly: '本周', monthly: '本月' };
 
 function formatStars(n) {
   if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
@@ -292,9 +292,9 @@ function renderList(range) {
       </div>
       <p class="item-desc">${item.desc}</p>
       <div class="item-meta">
-        <span>${item.lang}</span>
-        <span>★ ${formatStars(item.stars)}</span>
-        <span>⑂ ${formatStars(item.forks)}</span>
+        <span>语言: ${item.lang}</span>
+        <span>★ ${formatStars(item.stars)} 总星数</span>
+        <span>⑂ ${formatStars(item.forks)} Forks</span>
       </div>
     </article>
   `).join('');
