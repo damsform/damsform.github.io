@@ -3,456 +3,785 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Trending · 2026-06-30</title>
+<title>GitHub Trending · 2026-07-01</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background: #FAF7F2;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #2d2d2d;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #2c2c2c;
   padding: 40px 20px;
-  min-height: 100vh;
-}
-.container {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
 }
-header {
+.header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
-header h1 {
-  font-size: 22px;
-  font-weight: 600;
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #1a1a1a;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.02em;
 }
-header .date {
+.header .date {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 0.85rem;
   color: #999;
   margin-top: 6px;
 }
-.item {
-  display: flex;
-  align-items: flex-start;
-  padding: 16px 0;
-  border-bottom: 1px solid #EDE8E0;
-  gap: 12px;
+.card {
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s, transform 0.15s;
 }
-.item:last-child {
-  border-bottom: none;
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
 }
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-top: 6px;
-  flex-shrink: 0;
-}
-.content {
-  flex: 1;
-  min-width: 0;
-}
-.repo-line {
+.card-top {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
 }
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 .repo-name {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #1a1a1a;
 }
-.repo-name a {
-  color: inherit;
-  text-decoration: none;
-}
-.repo-name a:hover {
-  color: #E07A5F;
-}
 .badge {
-  display: inline-flex;
-  align-items: center;
-  background: #FFF3E0;
-  color: #E07A5F;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 10px;
+  background: #FF6B35;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
   white-space: nowrap;
 }
 .desc {
-  font-size: 13px;
+  font-size: 0.85rem;
   color: #666;
-  margin-top: 5px;
   line-height: 1.5;
+  margin: 10px 0 8px 0;
 }
-.stats {
+.meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.78rem;
+  color: #999;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: #aaa;
-  margin-top: 4px;
 }
-footer {
+.lang-tag {
+  margin-left: auto;
+  color: #aaa;
+}
+.footer {
   text-align: center;
   margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #EDE8E0;
-  font-size: 12px;
-  color: #bbb;
-}
-footer a {
-  color: #999;
-  text-decoration: none;
+  font-size: 0.78rem;
+  color: #ccc;
 }
 </style>
 </head>
 <body>
-<div class="container">
-<header>
-  <h1>GitHub Trending</h1>
-  <div class="date">2026-06-30</div>
-</header>
-<div class="item">
-  <div class="dot" style="background:#e34c26"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/ripienaar/free-for-dev">ripienaar/free-for-dev</a></span>
-      <span class="badge">+1935 today</span>
-    </div>
-    <div class="desc">免费开发者工具清单：SaaS/PaaS/IaaS 免费层汇总</div>
-    <div class="stats">⭐ 126,779 · 🍴 13,265</div>
-  </div>
+<div class="header">
+<h1>GitHub Trending</h1>
+<div class="date">2026-07-01</div>
 </div>
-<div class="item">
-  <div class="dot" style="background:#5e5086"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/simplex-chat/simplex-chat">simplex-chat/simplex-chat</a></span>
-      <span class="badge">+1607 today</span>
-    </div>
-    <div class="desc">无用户标识的隐私即时通讯网络，支持 iOS/Android/桌面</div>
-    <div class="stats">⭐ 16,685 · 🍴 966</div>
-  </div>
+<a href="https://github.com/msitarzewski/agency-agents" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#89e051"></span>
+<span class="repo-name">msitarzewski/agency-agents</span>
+<span class="badge">+1791 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#89e051"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/msitarzewski/agency-agents">msitarzewski/agency-agents</a></span>
-      <span class="badge">+1425 today</span>
-    </div>
-    <div class="desc">AI 代理公司模板：前端、社区管理、创意注入等专业 Agent 集合</div>
-    <div class="stats">⭐ 119,040 · 🍴 19,489</div>
-  </div>
+<p class="desc">一站式 AI 代理公司工具包，包含前端开发、社区运营等各类专家 Agent，各有独特个性和交付流程</p>
+<div class="meta">
+<span>⭐ 120,886</span>
+<span>🍴 19,750</span>
+<span class="lang-tag">Shell</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a></span>
-      <span class="badge">+1386 today</span>
-    </div>
-    <div class="desc">AI 时代伯克希尔：基于 Claude/Codex 的价值投资研究框架</div>
-    <div class="stats">⭐ 6,725 · 🍴 873</div>
-  </div>
+</a>
+<a href="https://github.com/hasaneyldrm/exercises-dataset" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#e34c26"></span>
+<span class="repo-name">hasaneyldrm/exercises-dataset</span>
+<span class="badge">+1343 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/browser-use/video-use">browser-use/video-use</a></span>
-      <span class="badge">+967 today</span>
-    </div>
-    <div class="desc">用编程 Agent 编辑视频</div>
-    <div class="stats">⭐ 11,991 · 🍴 1,573</div>
-  </div>
+<p class="desc">433 项健身动作的综合数据集，包含名称、分类、目标肌群、器材、说明、缩略图和动画视频</p>
+<div class="meta">
+<span>⭐ 6,632</span>
+<span>🍴 796</span>
+<span class="lang-tag">HTML</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/topoteretes/cognee">topoteretes/cognee</a></span>
-      <span class="badge">+868 today</span>
-    </div>
-    <div class="desc">开源 AI 记忆平台：为 Agent 提供跨会话持久化长期记忆</div>
-    <div class="stats">⭐ 25,694 · 🍴 2,364</div>
-  </div>
+</a>
+<a href="https://github.com/Panniantong/Agent-Reach" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">Panniantong/Agent-Reach</span>
+<span class="badge">+1339 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/HKUDS/Vibe-Trading">HKUDS/Vibe-Trading</a></span>
-      <span class="badge">+839 today</span>
-    </div>
-    <div class="desc">Vibe-Trading：你的个人交易 Agent</div>
-    <div class="stats">⭐ 15,147 · 🍴 2,691</div>
-  </div>
+<p class="desc">让 AI Agent 拥有全网信息获取能力，支持 Twitter/Reddit/YouTube/GitHub/B站/小红书等平台的阅读与搜索，零 API 费用</p>
+<div class="meta">
+<span>⭐ 47,069</span>
+<span>🍴 3,728</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#F05138"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/altic-dev/FluidVoice">altic-dev/FluidVoice</a></span>
-      <span class="badge">+830 today</span>
-    </div>
-    <div class="desc">macOS 最快离线语音转文字听写应用，完全本地运行</div>
-    <div class="stats">⭐ 4,431 · 🍴 279</div>
-  </div>
+</a>
+<a href="https://github.com/simplex-chat/simplex-chat" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#5e5086"></span>
+<span class="repo-name">simplex-chat/simplex-chat</span>
+<span class="badge">+1235 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/firecrawl/firecrawl">firecrawl/firecrawl</a></span>
-      <span class="badge">+826 today</span>
-    </div>
-    <div class="desc">大规模网页搜索、抓取和交互 API</div>
-    <div class="stats">⭐ 141,565 · 🍴 8,153</div>
-  </div>
+<p class="desc">首个完全无需用户标识的即时通讯网络，100% 隐私设计，支持 iOS/Android/桌面端</p>
+<div class="meta">
+<span>⭐ 17,334</span>
+<span>🍴 1,008</span>
+<span class="lang-tag">Haskell</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/JCodesMore/ai-website-cloner-template">JCodesMore/ai-website-cloner-template</a></span>
-      <span class="badge">+760 today</span>
-    </div>
-    <div class="desc">一条命令用 AI 编程代理克隆任意网站</div>
-    <div class="stats">⭐ 23,551 · 🍴 3,351</div>
-  </div>
+</a>
+<a href="https://github.com/xbtlin/ai-berkshire" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">xbtlin/ai-berkshire</span>
+<span class="badge">+969 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></span>
-      <span class="badge">+617 today</span>
-    </div>
-    <div class="desc">免费 AI 网关：一个端点接入 160+ 提供商，支持 Claude/GPT/Gemini</div>
-    <div class="stats">⭐ 7,944 · 🍴 1,346</div>
-  </div>
+<p class="desc">AI 时代的伯克希尔：基于 Claude Code/Codex 的价值投资研究框架，融合巴菲特、芒格、段永平、李录方法论</p>
+<div class="meta">
+<span>⭐ 7,486</span>
+<span>🍴 954</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#dea584"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/ogulcancelik/herdr">ogulcancelik/herdr</a></span>
-      <span class="badge">+467 today</span>
-    </div>
-    <div class="desc">终端中的 Agent 多路复用器</div>
-    <div class="stats">⭐ 8,547 · 🍴 517</div>
-  </div>
+</a>
+<a href="https://github.com/obra/superpowers" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#89e051"></span>
+<span class="repo-name">obra/superpowers</span>
+<span class="badge">+890 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/Robbyant/lingbot-map">Robbyant/lingbot-map</a></span>
-      <span class="badge">+465 today</span>
-    </div>
-    <div class="desc">流式数据 3D 场景重建前馈基础模型</div>
-    <div class="stats">⭐ 8,585 · 🍴 835</div>
-  </div>
+<p class="desc">一套实战验证的 Agent 技能框架与软件开发方法论</p>
+<div class="meta">
+<span>⭐ 242,492</span>
+<span>🍴 21,520</span>
+<span class="lang-tag">Shell</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/commaai/openpilot">commaai/openpilot</a></span>
-      <span class="badge">+458 today</span>
-    </div>
-    <div class="desc">机器人操作系统 openpilot，支持 300+ 车型辅助驾驶升级</div>
-    <div class="stats">⭐ 62,790 · 🍴 11,112</div>
-  </div>
+</a>
+<a href="https://github.com/ripienaar/free-for-dev" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#e34c26"></span>
+<span class="repo-name">ripienaar/free-for-dev</span>
+<span class="badge">+742 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/facebook/astryx">facebook/astryx</a></span>
-      <span class="badge">+426 today</span>
-    </div>
-    <div class="desc">Meta 开源设计系统：完全可定制、Agent 就绪</div>
-    <div class="stats">⭐ 1,262 · 🍴 78</div>
-  </div>
+<p class="desc">开发者免费资源大全：汇总 SaaS/PaaS/IaaS 免费层服务</p>
+<div class="meta">
+<span>⭐ 127,318</span>
+<span>🍴 13,307</span>
+<span class="lang-tag">HTML</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/TauricResearch/TradingAgents">TauricResearch/TradingAgents</a></span>
-      <span class="badge">+362 today</span>
-    </div>
-    <div class="desc">多 Agent LLM 金融交易框架</div>
-    <div class="stats">⭐ 89,772 · 🍴 17,327</div>
-  </div>
+</a>
+<a href="https://github.com/browser-use/video-use" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">browser-use/video-use</span>
+<span class="badge">+721 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/cupy/cupy">cupy/cupy</a></span>
-      <span class="badge">+352 today</span>
-    </div>
-    <div class="desc">GPU 上的 NumPy 和 SciPy</div>
-    <div class="stats">⭐ 11,857 · 🍴 1,083</div>
-  </div>
+<p class="desc">用编程 Agent 编辑视频，将 AI 编码能力引入视频制作</p>
+<div class="meta">
+<span>⭐ 12,595</span>
+<span>🍴 1,607</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#00ADD8"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/canopy-network/canopy">canopy-network/canopy</a></span>
-      <span class="badge">+352 today</span>
-    </div>
-    <div class="desc">Canopy Network 协议的 Go 官方实现</div>
-    <div class="stats">⭐ 12,650 · 🍴 15,514</div>
-  </div>
+</a>
+<a href="https://github.com/HKUDS/Vibe-Trading" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">HKUDS/Vibe-Trading</span>
+<span class="badge">+721 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#89e051"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/0xNyk/council-of-high-intelligence">0xNyk/council-of-high-intelligence</a></span>
-      <span class="badge">+331 today</span>
-    </div>
-    <div class="desc">18 位 AI 智者议会：亚里士多德、费曼、卡尼曼等跨 LLM 多轮审议</div>
-    <div class="stats">⭐ 1,951 · 🍴 204</div>
-  </div>
+<p class="desc">Vibe-Trading：你的个人 AI 交易代理</p>
+<div class="meta">
+<span>⭐ 15,793</span>
+<span>🍴 2,736</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/vercel-labs/skills">vercel-labs/skills</a></span>
-      <span class="badge">+313 today</span>
-    </div>
-    <div class="desc">开放 Agent 技能工具 - npx skills</div>
-    <div class="stats">⭐ 24,347 · 🍴 2,000</div>
-  </div>
+</a>
+<a href="https://github.com/altic-dev/FluidVoice" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#F05138"></span>
+<span class="repo-name">altic-dev/FluidVoice</span>
+<span class="badge">+588 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/unclecode/crawl4ai">unclecode/crawl4ai</a></span>
-      <span class="badge">+288 today</span>
-    </div>
-    <div class="desc">开源 LLM 友好型 Web 爬虫和抓取工具</div>
-    <div class="stats">⭐ 70,315 · 🍴 7,204</div>
-  </div>
+<p class="desc">最快的 macOS 听写应用，设备端语音识别 + AI 增强模型，Wispr Flow 的本地替代品</p>
+<div class="meta">
+<span>⭐ 4,929</span>
+<span>🍴 300</span>
+<span class="lang-tag">Swift</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#f1e05a"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/santifer/career-ops">santifer/career-ops</a></span>
-      <span class="badge">+283 today</span>
-    </div>
-    <div class="desc">基于 Claude Code 的 AI 求职系统：14 种技能模式 + Go 仪表盘</div>
-    <div class="stats">⭐ 56,677 · 🍴 11,195</div>
-  </div>
+</a>
+<a href="https://github.com/logto-io/logto" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">logto-io/logto</span>
+<span class="badge">+561 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3178c6"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/refactoringhq/tolaria">refactoringhq/tolaria</a></span>
-      <span class="badge">+280 today</span>
-    </div>
-    <div class="desc">Markdown 知识库管理桌面应用</div>
-    <div class="stats">⭐ 17,553 · 🍴 1,206</div>
-  </div>
+<p class="desc">面向 SaaS 和 AI 应用的认证授权基础设施，基于 OIDC/OAuth 2.1，支持多租户/SSO/RBAC</p>
+<div class="meta">
+<span>⭐ 13,022</span>
+<span>🍴 889</span>
+<span class="lang-tag">TypeScript</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/yt-dlp/yt-dlp">yt-dlp/yt-dlp</a></span>
-      <span class="badge">+273 today</span>
-    </div>
-    <div class="desc">功能丰富的命令行音视频下载器</div>
-    <div class="stats">⭐ 174,278 · 🍴 14,701</div>
-  </div>
+</a>
+<a href="https://github.com/usestrix/strix" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">usestrix/strix</span>
+<span class="badge">+515 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#dea584"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/tinyhumansai/openhuman">tinyhumansai/openhuman</a></span>
-      <span class="badge">+263 today</span>
-    </div>
-    <div class="desc">个人 AI 超级智能：私密、简洁、极其强大</div>
-    <div class="stats">⭐ 33,880 · 🍴 3,280</div>
-  </div>
+<p class="desc">开源 AI 渗透测试工具，自动发现并修复应用漏洞</p>
+<div class="meta">
+<span>⭐ 28,124</span>
+<span>🍴 3,124</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#dea584"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/lumina-ai-inc/chunkr">lumina-ai-inc/chunkr</a></span>
-      <span class="badge">+262 today</span>
-    </div>
-    <div class="desc">视觉基础设施：将复杂文档转为 RAG/LLM 可用数据</div>
-    <div class="stats">⭐ 3,829 · 🍴 245</div>
-  </div>
+</a>
+<a href="https://github.com/ogulcancelik/herdr" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">ogulcancelik/herdr</span>
+<span class="badge">+486 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#f1e05a"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/zarazhangrui/frontend-slides">zarazhangrui/frontend-slides</a></span>
-      <span class="badge">+241 today</span>
-    </div>
-    <div class="desc">用编程 Agent 的前端技能创建精美幻灯片</div>
-    <div class="stats">⭐ 23,969 · 🍴 1,953</div>
-  </div>
+<p class="desc">运行在终端中的 Agent 多路复用器，同时管理多个 AI 编程代理</p>
+<div class="meta">
+<span>⭐ 9,013</span>
+<span>🍴 541</span>
+<span class="lang-tag">Rust</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#3572A5"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/soxoj/maigret">soxoj/maigret</a></span>
-      <span class="badge">+224 today</span>
-    </div>
-    <div class="desc">通过用户名从 3000+ 网站收集人物档案</div>
-    <div class="stats">⭐ 34,428 · 🍴 2,602</div>
-  </div>
+</a>
+<a href="https://github.com/google/agents-cli" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">google/agents-cli</span>
+<span class="badge">+445 today</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#555555"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/veracrypt/VeraCrypt">veracrypt/VeraCrypt</a></span>
-      <span class="badge">+186 today</span>
-    </div>
-    <div class="desc">基于 TrueCrypt 的强安全磁盘加密工具</div>
-    <div class="stats">⭐ 10,506 · 🍴 1,231</div>
-  </div>
+<p class="desc">Google 官方 CLI 工具，将编程助手变为 AI Agent 创建、评估和部署专家</p>
+<div class="meta">
+<span>⭐ 4,192</span>
+<span>🍴 454</span>
+<span class="lang-tag">Python</span>
 </div>
-<div class="item">
-  <div class="dot" style="background:#f1e05a"></div>
-  <div class="content">
-    <div class="repo-line">
-      <span class="repo-name"><a href="https://github.com/drawdb-io/drawdb">drawdb-io/drawdb</a></span>
-      <span class="badge">+172 today</span>
-    </div>
-    <div class="desc">免费在线数据库图表编辑器和 SQL 生成器</div>
-    <div class="stats">⭐ 37,780 · 🍴 3,062</div>
-  </div>
+</a>
+<a href="https://github.com/refactoringhq/tolaria" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">refactoringhq/tolaria</span>
+<span class="badge">+435 today</span>
 </div>
-<footer>
-  <a href="https://damsform.github.io/">damsform.github.io</a>
-</footer>
+<p class="desc">桌面端 Markdown 知识库管理应用</p>
+<div class="meta">
+<span>⭐ 17,814</span>
+<span>🍴 1,216</span>
+<span class="lang-tag">TypeScript</span>
 </div>
+</a>
+<a href="https://github.com/diegosouzapw/OmniRoute" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">diegosouzapw/OmniRoute</span>
+<span class="badge">+387 today</span>
+</div>
+<p class="desc">免费 AI 网关：一个端点接入 231+ 供应商，支持 Claude/GPT/Gemini，智能压缩节省 15-95% token</p>
+<div class="meta">
+<span>⭐ 8,520</span>
+<span>🍴 1,392</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/facebook/astryx" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">facebook/astryx</span>
+<span class="badge">+364 today</span>
+</div>
+<p class="desc">Meta 开源的可定制设计系统，完全适配 Agent 使用场景</p>
+<div class="meta">
+<span>⭐ 1,779</span>
+<span>🍴 96</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/CoreBunch/Instatic" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">CoreBunch/Instatic</span>
+<span class="badge">+351 today</span>
+</div>
+<p class="desc">现代自托管可视化 CMS，1 分钟即可部署运行</p>
+<div class="meta">
+<span>⭐ 1,529</span>
+<span>🍴 138</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/interviewstreet/hiring-agent" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">interviewstreet/hiring-agent</span>
+<span class="badge">+312 today</span>
+</div>
+<p class="desc">AI 简历评估与打分代理</p>
+<div class="meta">
+<span>⭐ 3,994</span>
+<span>🍴 787</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/roboflow/supervision" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">roboflow/supervision</span>
+<span class="badge">+309 today</span>
+</div>
+<p class="desc">可复用的计算机视觉工具库</p>
+<div class="meta">
+<span>⭐ 45,909</span>
+<span>🍴 4,072</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/canopy-network/canopy" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">canopy-network/canopy</span>
+<span class="badge">+307 today</span>
+</div>
+<p class="desc">Canopy Network 协议的官方 Go 实现</p>
+<div class="meta">
+<span>⭐ 12,902</span>
+<span>🍴 15,764</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/D4Vinci/Scrapling" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">D4Vinci/Scrapling</span>
+<span class="badge">+280 today</span>
+</div>
+<p class="desc">自适应网页抓取框架，从单个请求到全规模爬取一站搞定</p>
+<div class="meta">
+<span>⭐ 67,405</span>
+<span>🍴 6,658</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/microsoft/AI-For-Beginners" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#DA5B0B"></span>
+<span class="repo-name">microsoft/AI-For-Beginners</span>
+<span class="badge">+252 today</span>
+</div>
+<p class="desc">微软 AI 入门课程：12 周 24 课，面向所有人的 AI 教育</p>
+<div class="meta">
+<span>⭐ 49,365</span>
+<span>🍴 10,162</span>
+<span class="lang-tag">Jupyter Notebook</span>
+</div>
+</a>
+<a href="https://github.com/cupy/cupy" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">cupy/cupy</span>
+<span class="badge">+224 today</span>
+</div>
+<p class="desc">GPU 版 NumPy 和 SciPy，用于高性能科学计算</p>
+<div class="meta">
+<span>⭐ 11,974</span>
+<span>🍴 1,087</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/santifer/career-ops" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">santifer/career-ops</span>
+<span class="badge">+216 today</span>
+</div>
+<p class="desc">基于 Claude Code 的 AI 求职系统，14 种技能模式 + Go 仪表盘 + PDF 生成</p>
+<div class="meta">
+<span>⭐ 56,839</span>
+<span>🍴 11,246</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/Robbyant/lingbot-map" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">Robbyant/lingbot-map</span>
+<span class="badge">+189 today</span>
+</div>
+<p class="desc">前馈式 3D 基础模型，从流式数据重建场景</p>
+<div class="meta">
+<span>⭐ 8,871</span>
+<span>🍴 859</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/vercel-labs/skills" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">vercel-labs/skills</span>
+<span class="badge">+184 today</span>
+</div>
+<p class="desc">开放的 Agent 技能工具，npx skills 即可使用</p>
+<div class="meta">
+<span>⭐ 24,509</span>
+<span>🍴 2,022</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/humanlayer/12-factor-agents" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">humanlayer/12-factor-agents</span>
+<span class="badge">+166 today</span>
+</div>
+<p class="desc">构建生产级 LLM 软件的 12 条原则</p>
+<div class="meta">
+<span>⭐ 23,889</span>
+<span>🍴 1,830</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/decolua/9router" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">decolua/9router</span>
+<span class="badge">+161 today</span>
+</div>
+<p class="desc">免费无限 AI 编程，接入 40+ 供应商的 Claude/GPT/Gemini，自动回退永不限制</p>
+<div class="meta">
+<span>⭐ 19,072</span>
+<span>🍴 3,085</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/tinyhumansai/openhuman" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">tinyhumansai/openhuman</span>
+<span class="badge">+140 today</span>
+</div>
+<p class="desc">个人 AI 超级智能体，私密、简单且极其强大</p>
+<div class="meta">
+<span>⭐ 34,006</span>
+<span>🍴 3,304</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/yikart/AiToEarn" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">yikart/AiToEarn</span>
+<span class="badge">+128 today</span>
+</div>
+<p class="desc">Let's use AI to Earn!</p>
+<div class="meta">
+<span>⭐ 22,276</span>
+<span>🍴 3,373</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/drawdb-io/drawdb" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">drawdb-io/drawdb</span>
+<span class="badge">+126 today</span>
+</div>
+<p class="desc">Free, simple, and intuitive online database diagram editor and SQL generator.</p>
+<div class="meta">
+<span>⭐ 37,901</span>
+<span>🍴 3,069</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/1jehuang/jcode" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">1jehuang/jcode</span>
+<span class="badge">+122 today</span>
+</div>
+<p class="desc">Coding Agent Harness</p>
+<div class="meta">
+<span>⭐ 8,024</span>
+<span>🍴 891</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/lumina-ai-inc/chunkr" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">lumina-ai-inc/chunkr</span>
+<span class="badge">+117 today</span>
+</div>
+<p class="desc">Vision infrastructure to turn complex documents into RAG/LLM-ready data</p>
+<div class="meta">
+<span>⭐ 3,879</span>
+<span>🍴 245</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/datawhalechina/easy-vibe" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">datawhalechina/easy-vibe</span>
+<span class="badge">+100 today</span>
+</div>
+<p class="desc">vibe coding 2026 | Your First Modern Coding course beginners to master step by step.</p>
+<div class="meta">
+<span>⭐ 17,574</span>
+<span>🍴 1,661</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">ChromeDevTools/chrome-devtools-mcp</span>
+<span class="badge">+93 today</span>
+</div>
+<p class="desc">Chrome DevTools for coding agents</p>
+<div class="meta">
+<span>⭐ 44,788</span>
+<span>🍴 2,907</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/earthtojake/text-to-cad" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">earthtojake/text-to-cad</span>
+<span class="badge">+90 today</span>
+</div>
+<p class="desc">A collection of agent skills for CAD, robotics and hardware design</p>
+<div class="meta">
+<span>⭐ 7,332</span>
+<span>🍴 865</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/ZSeven-W/openpencil" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3178c6"></span>
+<span class="repo-name">ZSeven-W/openpencil</span>
+<span class="badge">+80 today</span>
+</div>
+<p class="desc">The world's first open-source AI-native vector design tool. Design-as-Code. Turn prompts into UI directly on the live canvas.</p>
+<div class="meta">
+<span>⭐ 3,773</span>
+<span>🍴 376</span>
+<span class="lang-tag">TypeScript</span>
+</div>
+</a>
+<a href="https://github.com/AlexsJones/llmfit" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">AlexsJones/llmfit</span>
+<span class="badge">+74 today</span>
+</div>
+<p class="desc">Hundreds of models & providers. One command to find what runs on your hardware.</p>
+<div class="meta">
+<span>⭐ 28,913</span>
+<span>🍴 1,774</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/poloclub/transformer-explainer" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">poloclub/transformer-explainer</span>
+<span class="badge">+72 today</span>
+</div>
+<p class="desc">Transformer Explained Visually: Learn How LLM Transformer Models Work with Interactive Visualization</p>
+<div class="meta">
+<span>⭐ 8,048</span>
+<span>🍴 883</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/tt-a1i/archify" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">tt-a1i/archify</span>
+<span class="badge">+67 today</span>
+</div>
+<p class="desc">Any agent Skill: generate beautiful architecture diagrams with dark/light theme toggle and PNG/JPEG/WebP/SVG export</p>
+<div class="meta">
+<span>⭐ 1,617</span>
+<span>🍴 109</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/shuvonsec/claude-bug-bounty" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">shuvonsec/claude-bug-bounty</span>
+<span class="badge">+57 today</span>
+</div>
+<p class="desc">AI-powered bug bounty hunting from your terminal - recon, 20 vuln classes, autonomous hunting, and report generation.</p>
+<div class="meta">
+<span>⭐ 3,784</span>
+<span>🍴 662</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/qdrant/qdrant" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">qdrant/qdrant</span>
+<span class="badge">+50 today</span>
+</div>
+<p class="desc">High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI.</p>
+<div class="meta">
+<span>⭐ 32,835</span>
+<span>🍴 2,439</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/kunchenguid/treehouse" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">kunchenguid/treehouse</span>
+<span class="badge">+47 today</span>
+</div>
+<p class="desc">Manage worktrees without managing worktrees.</p>
+<div class="meta">
+<span>⭐ 568</span>
+<span>🍴 58</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/Ed1s0nZ/CyberStrikeAI" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">Ed1s0nZ/CyberStrikeAI</span>
+<span class="badge">+47 today</span>
+</div>
+<p class="desc">AI-native security testing platform built in Go. Integrates 100+ security tools, intelligent orchestration, role-based testing.</p>
+<div class="meta">
+<span>⭐ 4,878</span>
+<span>🍴 794</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/rohitg00/pro-workflow" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#f1e05a"></span>
+<span class="repo-name">rohitg00/pro-workflow</span>
+<span class="badge">+43 today</span>
+</div>
+<p class="desc">Claude Code learns from your corrections: self-correcting memory that compounds over 50+ sessions.</p>
+<div class="meta">
+<span>⭐ 2,524</span>
+<span>🍴 240</span>
+<span class="lang-tag">JavaScript</span>
+</div>
+</a>
+<a href="https://github.com/SagerNet/sing-box" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">SagerNet/sing-box</span>
+<span class="badge">+41 today</span>
+</div>
+<p class="desc">The universal proxy platform</p>
+<div class="meta">
+<span>⭐ 35,533</span>
+<span>🍴 4,230</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/gastownhall/beads" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">gastownhall/beads</span>
+<span class="badge">+40 today</span>
+</div>
+<p class="desc">Beads - A memory upgrade for your coding agent</p>
+<div class="meta">
+<span>⭐ 24,996</span>
+<span>🍴 1,669</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/reacherhq/check-if-email-exists" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">reacherhq/check-if-email-exists</span>
+<span class="badge">+37 today</span>
+</div>
+<p class="desc">Check if an email address exists without sending any email, written in Rust.</p>
+<div class="meta">
+<span>⭐ 9,079</span>
+<span>🍴 651</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+<a href="https://github.com/AgentWrapper/agent-orchestrator" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#00ADD8"></span>
+<span class="repo-name">AgentWrapper/agent-orchestrator</span>
+<span class="badge">+35 today</span>
+</div>
+<p class="desc">Agentic orchestrator for parallel coding agents — plans tasks, spawns agents, and autonomously handles CI fixes, merge conflicts, and code reviews.</p>
+<div class="meta">
+<span>⭐ 7,825</span>
+<span>🍴 1,096</span>
+<span class="lang-tag">Go</span>
+</div>
+</a>
+<a href="https://github.com/Mebus/cupp" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#3572A5"></span>
+<span class="repo-name">Mebus/cupp</span>
+<span class="badge">+32 today</span>
+</div>
+<p class="desc">Common User Passwords Profiler (CUPP)</p>
+<div class="meta">
+<span>⭐ 6,100</span>
+<span>🍴 2,048</span>
+<span class="lang-tag">Python</span>
+</div>
+</a>
+<a href="https://github.com/openinterpreter/openinterpreter" class="card" target="_blank" rel="noopener">
+<div class="card-top">
+<span class="dot" style="background:#dea584"></span>
+<span class="repo-name">openinterpreter/openinterpreter</span>
+<span class="badge">+32 today</span>
+</div>
+<p class="desc">A lightweight coding agent for open models like Deepseek, Kimi, and Qwen</p>
+<div class="meta">
+<span>⭐ 64,211</span>
+<span>🍴 5,573</span>
+<span class="lang-tag">Rust</span>
+</div>
+</a>
+
+<div class="footer">Auto-generated by Hermes Agent</div>
 </body>
 </html>
