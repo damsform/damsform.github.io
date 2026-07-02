@@ -3,315 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub Trending · 2026-07-01</title>
+<title>GitHub Trending · 2026-07-02</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --canvas: #FAF7F2;
-  --card: #FFFFFF;
-  --card-hover: #F7F3ED;
-  --text: #2F3437;
-  --text-muted: #8B9198;
-  --border: #E8E4DD;
-  --accent: #D4A574;
-  --star: #E6B450;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--canvas);
-  color: var(--text);
-  line-height: 1.6;
-  padding: 24px 16px;
-  min-height: 100vh;
-}
-.container { max-width: 720px; margin: 0 auto; }
-header { text-align: center; margin-bottom: 32px; }
-h1 {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(24px, 5vw, 32px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-.date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-bottom: 28px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-.tab {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 8px 4px;
-  transition: all 0.15s ease;
-  border: none;
-  background: none;
-  position: relative;
-}
-.tab:hover { color: var(--text); }
-.tab.active {
-  font-weight: 600;
-  color: var(--text);
-}
-.tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: -13px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--accent);
-}
-.list { display: none; }
-.list.active { display: block; }
-.item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin-bottom: 12px;
-  transition: all 0.2s ease;
-}
-.item:hover {
-  background: var(--card-hover);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-.item-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-.lang-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-top: 7px;
-  flex-shrink: 0;
-}
-.lang-dot.Python { background: #3572A5; }
-.lang-dot.JavaScript { background: #F1E05A; }
-.lang-dot.TypeScript { background: #3178C6; }
-.lang-dot.Rust { background: #DEA584; }
-.lang-dot.Go { background: #00ADD8; }
-.lang-dot.HTML { background: #E34C26; }
-.lang-dot.Shell { background: #89E051; }
-.lang-dot.Swift { background: #FA7343; }
-.lang-dot.Haskell { background: #5E5086; }
-.lang-dot.C { background: #555555; }
-.lang-dot.NA { background: #999; }
-.item-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-  flex: 1;
-}
-.item-name:hover { color: var(--accent); }
-.item-stars {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--star);
-  font-weight: 500;
-  white-space: nowrap;
-}
-.item-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-.item-meta {
-  display: flex;
-  gap: 16px;
-  font-size: 12px;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace;
-}
-.item-meta span { display: flex; align-items: center; gap: 4px; }
-.empty {
-  text-align: center;
-  padding: 48px 24px;
-  color: var(--text-muted);
-  font-size: 14px;
-}
-@media (max-width: 480px) {
-  body { padding: 16px 12px; }
-  .tabs { gap: 20px; }
-  .tab { font-size: 14px; }
-  .item { padding: 14px 16px; }
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FAF7F2;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #2d2a26;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d2a26;
+    letter-spacing: -0.02em;
+  }
+  .header .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #8b8580;
+    margin-top: 6px;
+  }
+  .item {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .repo-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #2d2a26;
+  }
+  .today-badge {
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .item-desc {
+    font-size: 0.85rem;
+    color: #5a5550;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .item-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 0.78rem;
+    color: #8b8580;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .meta-item {
+    white-space: nowrap;
+  }
+  .lang-label {
+    opacity: 0.7;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.78rem;
+    color: #b0a8a0;
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <header>
+  <div class="header">
     <h1>GitHub Trending</h1>
-    <p class="date">2026-07-01</p>
-  </header>
-  
-  <nav class="tabs">
-    <button class="tab active" data-range="daily">Daily</button>
-    <button class="tab" data-range="weekly">Weekly</button>
-    <button class="tab" data-range="monthly">Monthly</button>
-  </nav>
-
-  <div id="daily" class="list active"></div>
-  <div id="weekly" class="list"></div>
-  <div id="monthly" class="list"></div>
-</div>
-
-<script>
-const data = [
-{"source":"All","timeRange":"daily","owner":"hasaneyldrm","name":"exercises-dataset","desc":"A comprehensive dataset of 433 fitness exercises.","descZh":"433项健身动作的综合数据集，包含名称、分类、目标肌群、器械、指导说明、缩略图和动画视频。","lang":"HTML","stars":7221,"forks":844,"starsInRange":1343,"url":"https://github.com/hasaneyldrm/exercises-dataset"},
-{"source":"All","timeRange":"daily","owner":"usestrix","name":"strix","desc":"Open-source AI penetration testing tool.","descZh":"开源AI渗透测试工具，用于发现和修复应用漏洞。","lang":"Python","stars":28343,"forks":3135,"starsInRange":515,"url":"https://github.com/usestrix/strix"},
-{"source":"All","timeRange":"daily","owner":"msitarzewski","name":"agency-agents","desc":"A complete AI agency at your fingertips.","descZh":"指尖上的完整AI代理团队——从前端专家到社区运营，每个代理都是具有个性、流程和交付物的专业专家。","lang":"Shell","stars":121328,"forks":19812,"starsInRange":1791,"url":"https://github.com/msitarzewski/agency-agents"},
-{"source":"All","timeRange":"daily","owner":"altic-dev","name":"FluidVoice","desc":"Fastest macOS Dictation app with on-device STT.","descZh":"最快的macOS听写应用，支持设备端语音识别和自定义AI增强模型，本地Wispr Flow替代品。","lang":"Swift","stars":5064,"forks":307,"starsInRange":588,"url":"https://github.com/altic-dev/FluidVoice"},
-{"source":"All","timeRange":"daily","owner":"diegosouzapw","name":"OmniRoute","desc":"Free AI gateway: one endpoint, 231+ providers.","descZh":"免费AI网关：一个端点接入231+提供商（50+免费），连接Claude Code、Codex、Cursor等工具到免费的Claude/GPT/Gemini。","lang":"TypeScript","stars":8777,"forks":1408,"starsInRange":387,"url":"https://github.com/diegosouzapw/OmniRoute"},
-{"source":"All","timeRange":"daily","owner":"browser-use","name":"video-use","desc":"Edit videos with coding agents.","descZh":"用编程代理编辑视频。","lang":"Python","stars":12780,"forks":1620,"starsInRange":721,"url":"https://github.com/browser-use/video-use"},
-{"source":"All","timeRange":"daily","owner":"xbtlin","name":"ai-berkshire","desc":"AI时代的伯克希尔：价值投资研究框架。","descZh":"AI时代的伯克希尔：基于Claude Code/Codex的价值投资研究框架，融合巴菲特、芒格、段永平、李录四位大师方法论。","lang":"Python","stars":7705,"forks":978,"starsInRange":969,"url":"https://github.com/xbtlin/ai-berkshire"},
-{"source":"All","timeRange":"daily","owner":"ripienaar","name":"free-for-dev","desc":"A list of SaaS, PaaS and IaaS with free tiers.","descZh":"SaaS、PaaS和IaaS免费层级服务列表，面向开发运维和基础设施开发者。","lang":"HTML","stars":127415,"forks":13318,"starsInRange":742,"url":"https://github.com/ripienaar/free-for-dev"},
-{"source":"All","timeRange":"daily","owner":"google","name":"agents-cli","desc":"CLI and skills for AI agents on Google Cloud.","descZh":"将任何编程助手转变为Google Cloud上AI代理专家的CLI和技能工具。","lang":"Python","stars":4359,"forks":467,"starsInRange":445,"url":"https://github.com/google/agents-cli"},
-{"source":"All","timeRange":"daily","owner":"simplex-chat","name":"simplex-chat","desc":"SimpleX - 100% private messaging network.","descZh":"SimpleX——首个无需任何用户标识的通讯网络，100%隐私设计，支持iOS、Android和桌面应用。","lang":"Haskell","stars":17421,"forks":1012,"starsInRange":1235,"url":"https://github.com/simplex-chat/simplex-chat"},
-{"source":"All","timeRange":"daily","owner":"obra","name":"superpowers","desc":"An agentic skills framework for software development.","descZh":"一个代理技能框架和软件开发方法论。","lang":"Shell","stars":242757,"forks":21540,"starsInRange":890,"url":"https://github.com/obra/superpowers"},
-{"source":"All","timeRange":"daily","owner":"Panniantong","name":"Agent-Reach","desc":"Give your AI agent eyes to see the entire internet.","descZh":"让你的AI代理拥有看遍整个互联网的眼睛。读取和搜索Twitter、Reddit、YouTube、GitHub、B站、小红书，一个CLI，零API费用。","lang":"Python","stars":47386,"forks":3759,"starsInRange":1339,"url":"https://github.com/Panniantong/Agent-Reach"},
-{"source":"All","timeRange":"daily","owner":"hugohe3","name":"ppt-master","desc":"AI generates editable PowerPoint from any document.","descZh":"AI从任何文档生成真正可编辑的PowerPoint——原生形状和动画，演讲者注释配音为音频旁白，支持遵循你自己的.pptx模板。","lang":"Python","stars":35399,"forks":2956,"starsInRange":881,"url":"https://github.com/hugohe3/ppt-master"},
-{"source":"JavaScript","timeRange":"daily","owner":"santifer","name":"career-ops","desc":"AI-powered job search system.","descZh":"基于Claude Code的AI驱动求职系统，14种技能模式，Go仪表盘，PDF生成，批量处理。","lang":"JavaScript","stars":56877,"forks":11251,"starsInRange":216,"url":"https://github.com/santifer/career-ops"},
-{"source":"JavaScript","timeRange":"daily","owner":"drawdb-io","name":"drawdb","desc":"Free online database diagram editor.","descZh":"免费、简单、直观的在线数据库图表编辑器和SQL生成器。","lang":"JavaScript","stars":37907,"forks":3070,"starsInRange":126,"url":"https://github.com/drawdb-io/drawdb"},
-{"source":"JavaScript","timeRange":"daily","owner":"decolua","name":"9router","desc":"Unlimited FREE AI coding via 40+ providers.","descZh":"无限免费AI编程。通过40+提供商连接Claude Code、Codex、Cursor等到免费的Claude/GPT/Gemini，自动回退，RTK节省40%token。","lang":"JavaScript","stars":19124,"forks":3095,"starsInRange":161,"url":"https://github.com/decolua/9router"},
-{"source":"JavaScript","timeRange":"daily","owner":"poloclub","name":"transformer-explainer","desc":"Transformer Explained Visually.","descZh":"可视化解释Transformer：通过交互式可视化学习LLM Transformer模型的工作原理。","lang":"JavaScript","stars":8053,"forks":883,"starsInRange":72,"url":"https://github.com/poloclub/transformer-explainer"},
-{"source":"JavaScript","timeRange":"daily","owner":"datawhalechina","name":"easy-vibe","desc":"Vibe coding 2026 course.","descZh":"💻 Vibe编程2026 | 你的第一门现代编程课程，从入门到精通。","lang":"JavaScript","stars":17589,"forks":1664,"starsInRange":100,"url":"https://github.com/datawhalechina/easy-vibe"},
-{"source":"TypeScript","timeRange":"daily","owner":"refactoringhq","name":"tolaria","desc":"Desktop app to manage markdown knowledge bases.","descZh":"管理Markdown知识库的桌面应用。","lang":"TypeScript","stars":17847,"forks":1217,"starsInRange":435,"url":"https://github.com/refactoringhq/tolaria"},
-{"source":"TypeScript","timeRange":"daily","owner":"logto-io","name":"logto","desc":"Auth infrastructure for SaaS and AI apps.","descZh":"🧑‍🚀 SaaS和AI应用的身份验证和授权基础设施，基于OIDC和OAuth 2.1，支持多租户、SSO和RBAC。","lang":"TypeScript","stars":13038,"forks":889,"starsInRange":561,"url":"https://github.com/logto-io/logto"},
-{"source":"TypeScript","timeRange":"daily","owner":"vercel-labs","name":"skills","desc":"The open agent skills tool.","descZh":"开放的代理技能工具 - npx skills。","lang":"TypeScript","stars":24544,"forks":2028,"starsInRange":184,"url":"https://github.com/vercel-labs/skills"},
-{"source":"TypeScript","timeRange":"daily","owner":"humanlayer","name":"12-factor-agents","desc":"Principles for LLM-powered software.","descZh":"我们能用哪些原则来构建真正足够好、可以交到生产客户手中的LLM驱动软件？","lang":"TypeScript","stars":23898,"forks":1830,"starsInRange":166,"url":"https://github.com/humanlayer/12-factor-agents"},
-{"source":"TypeScript","timeRange":"daily","owner":"ChromeDevTools","name":"chrome-devtools-mcp","desc":"Chrome DevTools for coding agents.","descZh":"为编程代理提供的Chrome DevTools。","lang":"TypeScript","stars":44806,"forks":2907,"starsInRange":93,"url":"https://github.com/ChromeDevTools/chrome-devtools-mcp"},
-{"source":"Python","timeRange":"daily","owner":"interviewstreet","name":"hiring-agent","desc":"AI agent to evaluate and score resumes.","descZh":"AI代理评估和打分简历。","lang":"Python","stars":4022,"forks":793,"starsInRange":312,"url":"https://github.com/interviewstreet/hiring-agent"},
-{"source":"Python","timeRange":"daily","owner":"D4Vinci","name":"Scrapling","desc":"Adaptive Web Scraping framework.","descZh":"🕷️ 自适应网页抓取框架，从单个请求到全规模爬取一站式处理。","lang":"Python","stars":67456,"forks":6666,"starsInRange":280,"url":"https://github.com/D4Vinci/Scrapling"},
-{"source":"Python","timeRange":"daily","owner":"cupy","name":"cupy","desc":"NumPy & SciPy for GPU.","descZh":"GPU版的NumPy和SciPy。","lang":"Python","stars":11980,"forks":1087,"starsInRange":224,"url":"https://github.com/cupy/cupy"},
-{"source":"Rust","timeRange":"daily","owner":"ogulcancelik","name":"herdr","desc":"Agent multiplexer in your terminal.","descZh":" residing 在你终端中的代理多路复用器。","lang":"Rust","stars":9133,"forks":548,"starsInRange":486,"url":"https://github.com/ogulcancelik/herdr"},
-{"source":"Rust","timeRange":"daily","owner":"lumina-ai-inc","name":"chunkr","desc":"Vision infrastructure for RAG/LLM data.","descZh":"将复杂文档转换为RAG/LLM就绪数据的视觉基础设施。","lang":"Rust","stars":3884,"forks":245,"starsInRange":117,"url":"https://github.com/lumina-ai-inc/chunkr"},
-{"source":"Rust","timeRange":"daily","owner":"1jehuang","name":"jcode","desc":"Coding Agent Harness.","descZh":"编程代理工具。","lang":"Rust","stars":8029,"forks":892,"starsInRange":122,"url":"https://github.com/1jehuang/jcode"},
-{"source":"Rust","timeRange":"daily","owner":"AlexsJones","name":"llmfit","desc":"Find models that run on your hardware.","descZh":"数百个模型和提供商。一条命令找到能在你硬件上运行的模型。","lang":"Rust","stars":28926,"forks":1774,"starsInRange":74,"url":"https://github.com/AlexsJones/llmfit"},
-{"source":"Rust","timeRange":"daily","owner":"tinyhumansai","name":"openhuman","desc":"Your Personal AI super intelligence.","descZh":"你的个人AI超级智能。私密、简单且极其强大。","lang":"Rust","stars":34019,"forks":3306,"starsInRange":140,"url":"https://github.com/tinyhumansai/openhuman"},
-{"source":"Go","timeRange":"daily","owner":"palemoky","name":"chinese-poetry-api","desc":"高性能中国古诗词API服务。","descZh":"📜 诗泉：高性能中国古诗词API服务。","lang":"Go","stars":1185,"forks":130,"starsInRange":82,"url":"https://github.com/palemoky/chinese-poetry-api"},
-{"source":"Go","timeRange":"daily","owner":"canopy-network","name":"canopy","desc":"Canopy Network protocol implementation.","descZh":"Canopy Network协议的官方Go实现。","lang":"Go","stars":12944,"forks":15804,"starsInRange":307,"url":"https://github.com/canopy-network/canopy"},
-{"source":"Go","timeRange":"daily","owner":"gastownhall","name":"beads","desc":"Memory upgrade for your coding agent.","descZh":"Beads - 为你的编程代理提供记忆升级。","lang":"Go","stars":25003,"forks":1668,"starsInRange":40,"url":"https://github.com/gastownhall/beads"},
-{"source":"Go","timeRange":"daily","owner":"Ed1s0nZ","name":"CyberStrikeAI","desc":"AI-native security testing platform.","descZh":"CyberStrikeAI是用Go构建的AI原生安全测试平台，集成100+安全工具、智能编排引擎、基于角色的测试和全面的生命周期管理。","lang":"Go","stars":4890,"forks":795,"starsInRange":47,"url":"https://github.com/Ed1s0nZ/CyberStrikeAI"},
-{"source":"All","timeRange":"weekly","owner":"calesthio","name":"OpenMontage","desc":"Open-source agentic video production system.","descZh":"全球首个开源代理视频制作系统。12条流水线、52个工具、500+代理技能。将你的AI编程助手变成完整的视频制作工作室。","lang":"Python","stars":30137,"forks":3406,"starsInRange":15353,"url":"https://github.com/calesthio/OpenMontage"},
-{"source":"All","timeRange":"weekly","owner":"DeusData","name":"codebase-memory-mcp","desc":"High-performance code intelligence MCP server.","descZh":"高性能代码智能MCP服务器。将代码库索引为持久知识图谱——平均仓库毫秒级完成。支持158种语言，亚毫秒查询，减少99%token消耗。","lang":"C","stars":23074,"forks":1683,"starsInRange":10031,"url":"https://github.com/DeusData/codebase-memory-mcp"},
-{"source":"All","timeRange":"weekly","owner":"google-labs-code","name":"design.md","desc":"Visual identity format for coding agents.","descZh":"向编程代理描述视觉身份的格式规范。DESIGN.md让代理对设计系统有持久、结构化的理解。","lang":"TypeScript","stars":23807,"forks":1874,"starsInRange":7524,"url":"https://github.com/google-labs-code/design.md"},
-{"source":"All","timeRange":"weekly","owner":"kunchenguid","name":"no-mistakes","desc":"git push no-mistakes.","descZh":"git push no-mistakes——零错误的代码提交。","lang":"Go","stars":4579,"forks":261,"starsInRange":2783,"url":"https://github.com/kunchenguid/no-mistakes"},
-{"source":"All","timeRange":"weekly","owner":"stablyai","name":"orca","desc":"ADE for parallel coding agents.","descZh":"Orca是用于并行代理团队的ADE（代理开发环境）。用你自己的订阅运行任何编程代理，支持桌面和移动端。","lang":"TypeScript","stars":9810,"forks":665,"starsInRange":3311,"url":"https://github.com/stablyai/orca"},
-{"source":"All","timeRange":"weekly","owner":"topoteretes","name":"cognee","desc":"Open-source AI memory platform for agents.","descZh":"Cognee是开源AI代理记忆平台。为你的AI代理提供跨会话的持久长期记忆，配备自托管知识图谱引擎。","lang":"Python","stars":26167,"forks":2408,"starsInRange":6417,"url":"https://github.com/topoteretes/cognee"},
-{"source":"All","timeRange":"weekly","owner":"jamiepine","name":"voicebox","desc":"Open-source AI voice studio.","descZh":"开源AI语音工作室。克隆、听写、创作。","lang":"TypeScript","stars":36398,"forks":4364,"starsInRange":3336,"url":"https://github.com/jamiepine/voicebox"},
-{"source":"All","timeRange":"weekly","owner":"NanmiCoder","name":"MediaCrawler","desc":"小红书/抖音/快手/B站爬虫。","descZh":"小红书笔记/评论爬虫、抖音视频/评论爬虫、快手视频/评论爬虫、B站视频/评论爬虫、微博帖子/评论爬虫、百度贴吧帖子/评论爬虫、知乎问答文章/评论爬虫。","lang":"Python","stars":54599,"forks":11112,"starsInRange":2683,"url":"https://github.com/NanmiCoder/MediaCrawler"},
-{"source":"JavaScript","timeRange":"weekly","owner":"asgeirtj","name":"system_prompts_leaks","desc":"Extracted system prompts from AI models.","descZh":"提取的系统提示词：Anthropic - Claude Fable 5, Opus 4.8, Claude Code；OpenAI - ChatGPT 5.5, Codex；Google - Gemini 3.5 Flash等。定期更新。","lang":"JavaScript","stars":47456,"forks":7745,"starsInRange":2047,"url":"https://github.com/asgeirtj/system_prompts_leaks"},
-{"source":"JavaScript","timeRange":"weekly","owner":"zarazhangrui","name":"frontend-slides","desc":"Create slides using coding agent.","descZh":"使用编程代理的前端技能在网页上创建精美幻灯片。","lang":"JavaScript","stars":24141,"forks":1961,"starsInRange":1471,"url":"https://github.com/zarazhangrui/frontend-slides"},
-{"source":"JavaScript","timeRange":"weekly","owner":"Anil-matcha","name":"Open-Generative-AI","desc":"Unrestricted AI video generation studio.","descZh":"无限制的开源AI视频平台替代品——免费AI图像和视频生成工作室，支持200+模型（Flux、Midjourney、Kling、Sora、Veo）。无内容过滤，自托管，MIT许可。","lang":"JavaScript","stars":21979,"forks":3739,"starsInRange":1408,"url":"https://github.com/Anil-matcha/Open-Generative-AI"},
-{"source":"TypeScript","timeRange":"weekly","owner":"JCodesMore","name":"ai-website-cloner-template","desc":"Clone any website with one command.","descZh":"一条命令用AI编程代理克隆任何网站。","lang":"TypeScript","stars":24095,"forks":3422,"starsInRange":5624,"url":"https://github.com/JCodesMore/ai-website-cloner-template"},
-{"source":"TypeScript","timeRange":"weekly","owner":"mauriceboe","name":"TREK","desc":"Self-hosted travel planner with collaboration.","descZh":"自托管旅行/行程规划器，支持实时协作、交互式地图、PWA支持、SSO、预算、打包清单等。","lang":"TypeScript","stars":8643,"forks":722,"starsInRange":2744,"url":"https://github.com/mauriceboe/TREK"},
-{"source":"TypeScript","timeRange":"weekly","owner":"garrytan","name":"gstack","desc":"Garry Tan's Claude Code setup: 23 tools.","descZh":"使用Garry Tan的Claude Code设置：23个固执己见的工具，分别担任CEO、设计师、工程经理、发布经理、文档工程师和QA。","lang":"TypeScript","stars":118490,"forks":17646,"starsInRange":4607,"url":"https://github.com/garrytan/gstack"},
-{"source":"TypeScript","timeRange":"weekly","owner":"koala73","name":"worldmonitor","desc":"Real-time global intelligence dashboard.","descZh":"实时全球情报仪表盘。AI驱动的新闻聚合、地缘政治监控和基础设施追踪，统一态势感知界面。","lang":"TypeScript","stars":61087,"forks":9522,"starsInRange":2142,"url":"https://github.com/koala73/worldmonitor"},
-{"source":"Python","timeRange":"weekly","owner":"ZhuLinsen","name":"daily_stock_analysis","desc":"LLM驱动的多市场股票智能分析系统。","descZh":"LLM驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。","lang":"Python","stars":52650,"forks":45659,"starsInRange":5806,"url":"https://github.com/ZhuLinsen/daily_stock_analysis"},
-{"source":"Python","timeRange":"weekly","owner":"bytedance","name":"deer-flow","desc":"Open-source long-horizon SuperAgent harness.","descZh":"开源长周期SuperAgent工具，可研究、编码和创作。借助沙箱、记忆、工具、技能、子代理和消息网关，处理从分钟到小时级别的不同任务。","lang":"Python","stars":75675,"forks":10214,"starsInRange":1898,"url":"https://github.com/bytedance/deer-flow"},
-{"source":"Python","timeRange":"weekly","owner":"opendatalab","name":"MinerU","desc":"Transforms PDFs into LLM-ready markdown.","descZh":"将PDF和Office等复杂文档转换为LLM就绪的Markdown/JSON，用于你的代理工作流。","lang":"Python","stars":72663,"forks":6093,"starsInRange":4142,"url":"https://github.com/opendatalab/MinerU"},
-{"source":"Rust","timeRange":"weekly","owner":"googleworkspace","name":"cli","desc":"Google Workspace CLI for Drive, Gmail, etc.","descZh":"Google Workspace CLI——一个命令行工具管理Drive、Gmail、Calendar、Sheets、Docs、Chat、Admin等。从Google Discovery Service动态构建，包含AI代理技能。","lang":"Rust","stars":29237,"forks":1667,"starsInRange":2011,"url":"https://github.com/googleworkspace/cli"},
-{"source":"Rust","timeRange":"weekly","owner":"tw93","name":"Pake","desc":"Turn any webpage into a desktop app.","descZh":"🤱🏻 一条命令将任何网页转换为桌面应用。","lang":"Rust","stars":58794,"forks":11773,"starsInRange":1724,"url":"https://github.com/tw93/Pake"},
-{"source":"Rust","timeRange":"weekly","owner":"rustdesk","name":"rustdesk","desc":"Open-source remote desktop application.","descZh":"开源远程桌面应用，专为自托管设计，TeamViewer的替代品。","lang":"Rust","stars":117416,"forks":17787,"starsInRange":687,"url":"https://github.com/rustdesk/rustdesk"},
-{"source":"Go","timeRange":"weekly","owner":"IceWhaleTech","name":"CasaOS","desc":"Open-source Personal Cloud system.","descZh":"CasaOS——简单、易用、优雅的开源自有云系统。","lang":"Go","stars":36095,"forks":2064,"starsInRange":1945,"url":"https://github.com/IceWhaleTech/CasaOS"},
-{"source":"Go","timeRange":"weekly","owner":"Tencent","name":"WeKnora","desc":"Open-source LLM knowledge platform.","descZh":"开源LLM知识平台：将原始文档转化为可查询的RAG、自主推理代理和自维护Wiki。","lang":"Go","stars":17591,"forks":2331,"starsInRange":536,"url":"https://github.com/Tencent/WeKnora"},
-{"source":"Go","timeRange":"weekly","owner":"jesseduffield","name":"lazygit","desc":"Simple terminal UI for git commands.","descZh":"git命令的简单终端UI。","lang":"Go","stars":79883,"forks":2893,"starsInRange":329,"url":"https://github.com/jesseduffield/lazygit"},
-{"source":"All","timeRange":"monthly","owner":"apple","name":"container","desc":"Linux containers on Mac using lightweight VMs.","descZh":"在Mac上使用轻量级虚拟机创建和运行Linux容器的工具。用Swift编写，针对Apple芯片优化。","lang":"Swift","stars":45440,"forks":1346,"starsInRange":18624,"url":"https://github.com/apple/container"},
-{"source":"All","timeRange":"monthly","owner":"mvanhorn","name":"last30days-skill","desc":"AI agent skill for topic research.","descZh":"AI代理技能，跨Reddit、X、YouTube、HN、Polymarket和网页研究任何主题——然后生成有据可查的摘要。","lang":"Python","stars":47967,"forks":3965,"starsInRange":21268,"url":"https://github.com/mvanhorn/last30days-skill"},
-{"source":"All","timeRange":"monthly","owner":"iptv-org","name":"iptv","desc":"Collection of publicly available IPTV channels.","descZh":"来自世界各地的公开可用IPTV频道集合。","lang":"TypeScript","stars":129644,"forks":7185,"starsInRange":13223,"url":"https://github.com/iptv-org/iptv"},
-{"source":"All","timeRange":"monthly","owner":"harry0703","name":"MoneyPrinterTurbo","desc":"利用AI大模型一键生成高清短视频。","descZh":"利用AI大模型，一键生成高清短视频。","lang":"Python","stars":94601,"forks":13744,"starsInRange":21864,"url":"https://github.com/harry0703/MoneyPrinterTurbo"},
-{"source":"All","timeRange":"monthly","owner":"Leonxlnx","name":"taste-skill","desc":"Gives your AI good taste.","descZh":"Taste-Skill——给你的AI好品味。阻止AI生成无聊、通用的垃圾内容。","lang":"JavaScript","stars":54014,"forks":3716,"starsInRange":24412,"url":"https://github.com/Leonxlnx/taste-skill"},
-{"source":"All","timeRange":"monthly","owner":"stablyai","name":"orca","desc":"ADE for working with parallel agents.","descZh":"Orca是用于并行代理团队的ADE。用你自己的订阅运行任何编程代理，支持桌面和移动端。","lang":"TypeScript","stars":9814,"forks":665,"starsInRange":5752,"url":"https://github.com/stablyai/orca"},
-{"source":"All","timeRange":"monthly","owner":"mukul975","name":"Anthropic-Cybersecurity-Skills","desc":"817 cybersecurity skills for AI agents.","descZh":"817个AI代理结构化网络安全技能，映射到6个框架：MITRE ATT&CK、NIST CSF 2.0等。支持Claude Code、Copilot、Codex等20+平台。","lang":"Python","stars":23541,"forks":2676,"starsInRange":10688,"url":"https://github.com/mukul975/Anthropic-Cybersecurity-Skills"},
-{"source":"All","timeRange":"monthly","owner":"tashfeenahmed","name":"freellmapi","desc":"OpenAI-compatible proxy with 16 LLM providers.","descZh":"OpenAI兼容代理，堆叠16个LLM提供商的免费层级（约17亿token/月）在一个/v1端点后。智能路由、自动故障转移、加密密钥。","lang":"TypeScript","stars":14315,"forks":2110,"starsInRange":7626,"url":"https://github.com/tashfeenahmed/freellmapi"},
-{"source":"All","timeRange":"monthly","owner":"OpenCut-app","name":"OpenCut","desc":"Open-source CapCut alternative.","descZh":"开源的CapCut替代品。","lang":"TypeScript","stars":60801,"forks":6573,"starsInRange":8695,"url":"https://github.com/OpenCut-app/OpenCut"},
-{"source":"JavaScript","timeRange":"monthly","owner":"openai","name":"plugins","desc":"OpenAI Plugins.","descZh":"OpenAI插件。","lang":"JavaScript","stars":3842,"forks":449,"starsInRange":2528,"url":"https://github.com/openai/plugins"},
-{"source":"JavaScript","timeRange":"monthly","owner":"pbakaus","name":"impeccable","desc":"Design language for AI harnesses.","descZh":"让你的AI工具更擅长设计的设计语言。","lang":"JavaScript","stars":42567,"forks":2381,"starsInRange":10742,"url":"https://github.com/pbakaus/impeccable"},
-{"source":"JavaScript","timeRange":"monthly","owner":"hmjz100","name":"LinkSwift","desc":"网盘文件下载地址获取工具。","descZh":"一个基于JavaScript的网盘文件下载地址获取工具。支持百度网盘/阿里云盘/中国移动云盘/天翼云盘/迅雷云盘/夸克网盘/UC网盘/123云盘八大网盘。","lang":"JavaScript","stars":17388,"forks":1026,"starsInRange":1970,"url":"https://github.com/hmjz100/LinkSwift"},
-{"source":"TypeScript","timeRange":"monthly","owner":"lfnovo","name":"open-notebook","desc":"Open Source Notebook LM alternative.","descZh":"Notebook LM的开源实现，具有更多灵活性和功能。","lang":"TypeScript","stars":34184,"forks":3809,"starsInRange":10333,"url":"https://github.com/lfnovo/open-notebook"},
-{"source":"TypeScript","timeRange":"monthly","owner":"can1357","name":"oh-my-pi","desc":"AI Coding agent for the terminal.","descZh":"⌥ 终端AI编程代理——哈希锚定编辑、优化工具工具、LSP、Python、浏览器、子代理等。","lang":"TypeScript","stars":15382,"forks":1361,"starsInRange":6466,"url":"https://github.com/can1357/oh-my-pi"},
-{"source":"TypeScript","timeRange":"monthly","owner":"colbymchenry","name":"codegraph","desc":"Pre-indexed code knowledge graph.","descZh":"预索引代码知识图谱，代码变更时自动同步，支持Claude Code、Codex、Gemini、Cursor等——更少token、更少工具调用、100%本地。","lang":"TypeScript","stars":56483,"forks":3484,"starsInRange":21519,"url":"https://github.com/colbymchenry/codegraph"},
-{"source":"TypeScript","timeRange":"monthly","owner":"Egonex-AI","name":"Understand-Anything","desc":"Interactive knowledge graph from code.","descZh":"将任何代码转化为可交互探索、搜索和提问的知识图谱。支持Claude Code、Codex、Cursor、Copilot、Gemini CLI等。","lang":"TypeScript","stars":69857,"forks":5775,"starsInRange":23129,"url":"https://github.com/Egonex-AI/Understand-Anything"},
-{"source":"TypeScript","timeRange":"monthly","owner":"firecrawl","name":"firecrawl","desc":"API to search, scrape the web at scale.","descZh":"大规模搜索、抓取和与网页交互的API。🔥","lang":"TypeScript","stars":142328,"forks":8202,"starsInRange":15851,"url":"https://github.com/firecrawl/firecrawl"},
-{"source":"Python","timeRange":"monthly","owner":"microsoft","name":"markitdown","desc":"Convert files to Markdown.","descZh":"将文件和Office文档转换为Markdown的Python工具。","lang":"Python","stars":161854,"forks":11403,"starsInRange":27786,"url":"https://github.com/microsoft/markitdown"},
-{"source":"Python","timeRange":"monthly","owner":"roboflow","name":"supervision","desc":"Reusable computer vision tools.","descZh":"我们编写可复用的计算机视觉工具。💜","lang":"Python","stars":46000,"forks":4080,"starsInRange":6218,"url":"https://github.com/roboflow/supervision"},
-{"source":"Python","timeRange":"monthly","owner":"Open-LLM-VTuber","name":"Open-LLM-VTuber","desc":"Talk to any LLM with voice interaction.","descZh":"与任何LLM进行免提语音交互，支持语音打断，Live2D面部在本地跨平台运行。","lang":"Python","stars":12212,"forks":1413,"starsInRange":4362,"url":"https://github.com/Open-LLM-VTuber/Open-LLM-VTuber"},
-{"source":"Python","timeRange":"monthly","owner":"Andyyyy64","name":"whichllm","desc":"Find the local LLM that runs best.","descZh":"找到在你的硬件上实际运行和表现最好的本地LLM。按真实、近期基准排名，而非参数数量。一条命令，立即运行。","lang":"Python","stars":5472,"forks":289,"starsInRange":3240,"url":"https://github.com/Andyyyy64/whichllm"},
-{"source":"Rust","timeRange":"monthly","owner":"farion1231","name":"cc-switch","desc":"Cross-platform assistant for AI coding tools.","descZh":"跨平台桌面多合一助手，支持Claude Code、Codex、OpenCode、OpenClaw、Gemini CLI和Hermes Agent。","lang":"Rust","stars":111429,"forks":7385,"starsInRange":25262,"url":"https://github.com/farion1231/cc-switch"},
-{"source":"Rust","timeRange":"monthly","owner":"t8y2","name":"dbx","desc":"Lightweight cross-platform database client.","descZh":"15MB轻量级跨平台数据库客户端。支持MySQL、PostgreSQL、SQLite、Redis、MongoDB、DuckDB、ClickHouse、SQL Server等。","lang":"Rust","stars":7939,"forks":683,"starsInRange":5358,"url":"https://github.com/t8y2/dbx"},
-{"source":"Rust","timeRange":"monthly","owner":"openai","name":"codex","desc":"Lightweight coding agent in terminal.","descZh":"在终端中运行的轻量级编程代理。","lang":"Rust","stars":94732,"forks":14048,"starsInRange":7718,"url":"https://github.com/openai/codex"},
-{"source":"Rust","timeRange":"monthly","owner":"dmtrKovalenko","name":"fff","desc":"Fastest file search SDK for AI agents.","descZh":"AI代理、Neovim、Rust、C、Python、Bun和NodeJS最快最准确的文件搜索SDK。","lang":"Rust","stars":9386,"forks":363,"starsInRange":3472,"url":"https://github.com/dmtrKovalenko/fff"},
-{"source":"Go","timeRange":"monthly","owner":"esengine","name":"DeepSeek-Reasonix","desc":"DeepSeek-native AI coding agent.","descZh":"DeepSeek原生AI编程代理，为你的终端设计。围绕前缀缓存稳定性工程化——让它一直运行。","lang":"Go","stars":25531,"forks":1567,"starsInRange":10592,"url":"https://github.com/esengine/DeepSeek-Reasonix"},
-{"source":"Go","timeRange":"monthly","owner":"MHSanaei","name":"3x-ui","desc":"Xray panel supporting multi-protocol.","descZh":"支持多协议多用户的Xray面板，支持到期日/流量/IP限制（Vmess、Vless、Trojan、ShadowSocks、Wireguard、Hysteria等）。","lang":"Go","stars":41977,"forks":7830,"starsInRange":3253,"url":"https://github.com/MHSanaei/3x-ui"},
-{"source":"Go","timeRange":"monthly","owner":"maximhq","name":"bifrost","desc":"Fastest enterprise AI gateway.","descZh":"最快的企业AI网关（比LiteLLM快50倍），具有自适应负载均衡、集群模式、防护栏、1000+模型支持和<100µs延迟。","lang":"Go","stars":6166,"forks":827,"starsInRange":794,"url":"https://github.com/maximhq/bifrost"}
-];
-
-const rangeLabels = { daily: 'today', weekly: 'this week', monthly: 'this month' };
-
-function formatStars(n) {
-  if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
-  return n.toString();
-}
-
-function renderList(range) {
-  const items = data
-    .filter(d => d.timeRange === range)
-    .sort((a, b) => b.starsInRange - a.starsInRange);
-  
-  const container = document.getElementById(range);
-  if (items.length === 0) {
-    container.innerHTML = '<div class="empty">No data for this time range</div>';
-    return;
-  }
-  
-  const label = rangeLabels[range];
-  container.innerHTML = items.map(item => `
-    <article class="item">
+    <div class="date">2026-07-02</div>
+  </div>
+    <a href="https://github.com/hasaneyldrm/exercises-dataset" class="item" target="_blank" rel="noopener">
       <div class="item-header">
-        <span class="lang-dot ${item.lang.replace(/\+/, 'plus')}" title="${item.lang}"></span>
-        <a class="item-name" href="${item.url}" target="_blank" rel="noopener">${item.owner}/${item.name}</a>
-        <span class="item-stars">★ ${formatStars(item.starsInRange)} ${label}</span>
+        <span class="lang-dot" style="background:#e34c26"></span>
+        <span class="repo-name">hasaneyldrm/exercises-dataset</span>
+        <span class="today-badge">+2470 today</span>
       </div>
-      <p class="item-desc">${item.descZh || item.desc}</p>
+      <div class="item-desc">433个健身动作的综合数据集，包含名称、分类、目标肌群、器械、说明、缩略图和动画视频</div>
       <div class="item-meta">
-        <span>${item.lang}</span>
-        <span>★ ${formatStars(item.stars)}</span>
-        <span>⑂ ${formatStars(item.forks)}</span>
+        <span class="meta-item">⭐ 8.4k</span>
+        <span class="meta-item">🍴 952</span>
+        <span class="meta-item lang-label">HTML</span>
       </div>
-    </article>
-  `).join('');
-}
-
-// Tab switching
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.list').forEach(l => l.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.range).classList.add('active');
-  });
-});
-
-// Initial render
-['daily', 'weekly', 'monthly'].forEach(renderList);
-</script>
+    </a>
+    <a href="https://github.com/msitarzewski/agency-agents" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#89e051"></span>
+        <span class="repo-name">msitarzewski/agency-agents</span>
+        <span class="today-badge">+2114 today</span>
+      </div>
+      <div class="item-desc">一站式AI代理机构——前端专家、社区运营、创意注入、现实检验等各类角色，各有独特个性和专业流程</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 123.5k</span>
+        <span class="meta-item">🍴 20.1k</span>
+        <span class="meta-item lang-label">Shell</span>
+      </div>
+    </a>
+    <a href="https://github.com/usestrix/strix" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">usestrix/strix</span>
+        <span class="today-badge">+1211 today</span>
+      </div>
+      <div class="item-desc">开源AI渗透测试工具，自动发现并修复应用漏洞</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 29.7k</span>
+        <span class="meta-item">🍴 3.2k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/microsoft/AI-For-Beginners" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#DA5B0B"></span>
+        <span class="repo-name">microsoft/AI-For-Beginners</span>
+        <span class="today-badge">+1096 today</span>
+      </div>
+      <div class="item-desc">微软出品的12周24课AI入门课程，适合所有人</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 50.5k</span>
+        <span class="meta-item">🍴 10.3k</span>
+        <span class="meta-item lang-label">Jupyter Notebook</span>
+      </div>
+    </a>
+    <a href="https://github.com/diegosouzapw/OmniRoute" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="repo-name">diegosouzapw/OmniRoute</span>
+        <span class="today-badge">+1010 today</span>
+      </div>
+      <div class="item-desc">免费AI网关：一个接口接入231+供应商，支持Claude/GPT/Gemini，自带token压缩和智能降级</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 9.5k</span>
+        <span class="meta-item">🍴 1.5k</span>
+        <span class="meta-item lang-label">TypeScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/affaan-m/ECC" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="repo-name">affaan-m/ECC</span>
+        <span class="today-badge">+721 today</span>
+      </div>
+      <div class="item-desc">AI编程助手性能优化系统，为Claude Code/Codex/Cursor等提供技能、记忆和安全增强</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 224.7k</span>
+        <span class="meta-item">🍴 34.4k</span>
+        <span class="meta-item lang-label">JavaScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/facebook/astryx" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="repo-name">facebook/astryx</span>
+        <span class="today-badge">+708 today</span>
+      </div>
+      <div class="item-desc">Meta开源的可定制设计系统，原生支持AI Agent</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 2.7k</span>
+        <span class="meta-item">🍴 135</span>
+        <span class="meta-item lang-label">TypeScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/HKUDS/Vibe-Trading" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">HKUDS/Vibe-Trading</span>
+        <span class="today-badge">+694 today</span>
+      </div>
+      <div class="item-desc">个人AI交易代理，智能辅助投资决策</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 16.5k</span>
+        <span class="meta-item">🍴 2.8k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/browser-use/video-use" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">browser-use/video-use</span>
+        <span class="today-badge">+693 today</span>
+      </div>
+      <div class="item-desc">用编程代理编辑视频</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 13.2k</span>
+        <span class="meta-item">🍴 1.7k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/Leonxlnx/taste-skill" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="repo-name">Leonxlnx/taste-skill</span>
+        <span class="today-badge">+638 today</span>
+      </div>
+      <div class="item-desc">赋予AI好品味的技能包，防止AI生成无聊、千篇一律的内容</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 54.5k</span>
+        <span class="meta-item">🍴 3.7k</span>
+        <span class="meta-item lang-label">JavaScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/ogulcancelik/herdr" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#dea584"></span>
+        <span class="repo-name">ogulcancelik/herdr</span>
+        <span class="today-badge">+609 today</span>
+      </div>
+      <div class="item-desc">终端中的AI代理多路复用器</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 9.6k</span>
+        <span class="meta-item">🍴 566</span>
+        <span class="meta-item lang-label">Rust</span>
+      </div>
+    </a>
+    <a href="https://github.com/farion1231/cc-switch" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#dea584"></span>
+        <span class="repo-name">farion1231/cc-switch</span>
+        <span class="today-badge">+604 today</span>
+      </div>
+      <div class="item-desc">跨平台桌面全能助手，统一管理Claude Code、Codex、Gemini CLI等编程工具</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 111.8k</span>
+        <span class="meta-item">🍴 7.4k</span>
+        <span class="meta-item lang-label">Rust</span>
+      </div>
+    </a>
+    <a href="https://github.com/google/agents-cli" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">google/agents-cli</span>
+        <span class="today-badge">+586 today</span>
+      </div>
+      <div class="item-desc">Google官方CLI工具，将编程助手变成AI Agent创建和部署专家</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 4.6k</span>
+        <span class="meta-item">🍴 483</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/altic-dev/FluidVoice" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#F05138"></span>
+        <span class="repo-name">altic-dev/FluidVoice</span>
+        <span class="today-badge">+572 today</span>
+      </div>
+      <div class="item-desc">macOS上最快的本地语音输入应用，设备端STT加AI增强模型</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 5.5k</span>
+        <span class="meta-item">🍴 332</span>
+        <span class="meta-item lang-label">Swift</span>
+      </div>
+    </a>
+    <a href="https://github.com/CoreBunch/Instatic" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="repo-name">CoreBunch/Instatic</span>
+        <span class="today-badge">+508 today</span>
+      </div>
+      <div class="item-desc">现代自托管可视化CMS，一分钟即可启动</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 2.0k</span>
+        <span class="meta-item">🍴 167</span>
+        <span class="meta-item lang-label">TypeScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/allenai/olmocr" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">allenai/olmocr</span>
+        <span class="today-badge">+334 today</span>
+      </div>
+      <div class="item-desc">将PDF线性化用于LLM数据集/训练的工具包</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 18.3k</span>
+        <span class="meta-item">🍴 1.5k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/decolua/9router" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="repo-name">decolua/9router</span>
+        <span class="today-badge">+284 today</span>
+      </div>
+      <div class="item-desc">Unlimited FREE AI coding. Connect Claude Code, Codex, Cursor, Cline, Copilot to FREE Claude/GPT/Gemini via 40+ providers.</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 19.3k</span>
+        <span class="meta-item">🍴 3.1k</span>
+        <span class="meta-item lang-label">JavaScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/canopy-network/canopy" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#00ADD8"></span>
+        <span class="repo-name">canopy-network/canopy</span>
+        <span class="today-badge">+271 today</span>
+      </div>
+      <div class="item-desc">Canopy Network协议的官方Go实现</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 13.1k</span>
+        <span class="meta-item">🍴 16.0k</span>
+        <span class="meta-item lang-label">Go</span>
+      </div>
+    </a>
+    <a href="https://github.com/omkarcloud/botasaurus" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">omkarcloud/botasaurus</span>
+        <span class="today-badge">+211 today</span>
+      </div>
+      <div class="item-desc">构建无懈可击的网络爬虫的全能框架</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 5.5k</span>
+        <span class="meta-item">🍴 480</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/yorukot/superfile" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#00ADD8"></span>
+        <span class="repo-name">yorukot/superfile</span>
+        <span class="today-badge">+204 today</span>
+      </div>
+      <div class="item-desc">颜值极高的现代终端文件管理器</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 17.9k</span>
+        <span class="meta-item">🍴 483</span>
+        <span class="meta-item lang-label">Go</span>
+      </div>
+    </a>
+    <a href="https://github.com/virgiliojr94/book-to-skill" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">virgiliojr94/book-to-skill</span>
+        <span class="today-badge">+192 today</span>
+      </div>
+      <div class="item-desc">将任何技术书籍PDF转化为Claude Code技能包</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 7.4k</span>
+        <span class="meta-item">🍴 913</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/Mebus/cupp" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">Mebus/cupp</span>
+        <span class="today-badge">+184 today</span>
+      </div>
+      <div class="item-desc">常用用户密码分析器(CUPP)，安全审计工具</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 6.2k</span>
+        <span class="meta-item">🍴 2.1k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/t8y2/dbx" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#dea584"></span>
+        <span class="repo-name">t8y2/dbx</span>
+        <span class="today-badge">+166 today</span>
+      </div>
+      <div class="item-desc">15MB轻量级跨平台数据库客户端，支持MySQL/PostgreSQL/SQLite/Redis/MongoDB等</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 8.1k</span>
+        <span class="meta-item">🍴 690</span>
+        <span class="meta-item lang-label">Rust</span>
+      </div>
+    </a>
+    <a href="https://github.com/0xNyk/council-of-high-intelligence" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#89e051"></span>
+        <span class="repo-name">0xNyk/council-of-high-intelligence</span>
+        <span class="today-badge">+161 today</span>
+      </div>
+      <div class="item-desc">18位AI智者（亚里士多德、费曼、卡尼曼等）多轮辩论帮你做决策</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 2.6k</span>
+        <span class="meta-item">🍴 245</span>
+        <span class="meta-item lang-label">Shell</span>
+      </div>
+    </a>
+    <a href="https://github.com/open-webui/open-webui" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">open-webui/open-webui</span>
+        <span class="today-badge">+160 today</span>
+      </div>
+      <div class="item-desc">用户友好的AI界面，支持Ollama和OpenAI API</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 143.7k</span>
+        <span class="meta-item">🍴 20.7k</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/refactoringhq/tolaria" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="repo-name">refactoringhq/tolaria</span>
+        <span class="today-badge">+150 today</span>
+      </div>
+      <div class="item-desc">桌面端Markdown知识库管理应用</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 18.0k</span>
+        <span class="meta-item">🍴 1.2k</span>
+        <span class="meta-item lang-label">TypeScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/HKUDS/VideoAgent" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">HKUDS/VideoAgent</span>
+        <span class="today-badge">+139 today</span>
+      </div>
+      <div class="item-desc">全能视频理解、编辑和重制的Agent框架</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 1.2k</span>
+        <span class="meta-item">🍴 160</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+    <a href="https://github.com/Wei-Shaw/sub2api" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#00ADD8"></span>
+        <span class="repo-name">Wei-Shaw/sub2api</span>
+        <span class="today-badge">+139 today</span>
+      </div>
+      <div class="item-desc">开源中转平台，将Claude/OpenAI/Gemini订阅统一为单一接口</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 29.8k</span>
+        <span class="meta-item">🍴 6.1k</span>
+        <span class="meta-item lang-label">Go</span>
+      </div>
+    </a>
+    <a href="https://github.com/coreyhaines31/marketingskills" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="repo-name">coreyhaines31/marketingskills</span>
+        <span class="today-badge">+138 today</span>
+      </div>
+      <div class="item-desc">Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 35.7k</span>
+        <span class="meta-item">🍴 5.8k</span>
+        <span class="meta-item lang-label">JavaScript</span>
+      </div>
+    </a>
+    <a href="https://github.com/Unclecheng-li/VulnClaw" class="item" target="_blank" rel="noopener">
+      <div class="item-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="repo-name">Unclecheng-li/VulnClaw</span>
+        <span class="today-badge">+132 today</span>
+      </div>
+      <div class="item-desc">基于AI Agent+MCP的自动化渗透测试工具，自然语言输入即可完成全流程</div>
+      <div class="item-meta">
+        <span class="meta-item">⭐ 1.6k</span>
+        <span class="meta-item">🍴 218</span>
+        <span class="meta-item lang-label">Python</span>
+      </div>
+    </a>
+  <div class="footer">Auto-collected daily · Powered by Hermes Agent</div>
+</div>
 </body>
 </html>
