@@ -1,485 +1,371 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Trending · 2026-07-03</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #FAF7F2;
-            color: #1a1a1a;
-            line-height: 1.6;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .item {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            transition: box-shadow 0.2s;
-        }
-        
-        .item:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        
-        .lang-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        
-        .repo-name {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 18px;
-            font-weight: 500;
-            color: #1a1a1a;
-            text-decoration: none;
-            flex: 1;
-        }
-        
-        .repo-name:hover {
-            color: #0366d6;
-        }
-        
-        .badge {
-            background: #f0f0f0;
-            color: #666;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        
-        .badge.today {
-            background: #fff4e6;
-            color: #d97706;
-        }
-        
-        .desc {
-            color: #555;
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        
-        .stats {
-            display: flex;
-            gap: 16px;
-            font-size: 13px;
-            color: #888;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .stats span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 12px;
-            }
-            
-            .item {
-                padding: 18px;
-            }
-            
-            .repo-name {
-                font-size: 16px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Trending · 2026-07-04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FAF7F2;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #2c2c2c;
+    padding: 48px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 36px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .repo-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  .badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: #FF6B35;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .desc-zh {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .meta {
+    font-size: 0.72rem;
+    color: #999;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #bbb;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #89e051"></div>
-                <a href="https://github.com/msitarzewski/agency-agents" class="repo-name" target="_blank">msitarzewski/agency-agents</a>
-                <span class="badge today">+3032 today</span>
-            </div>
-            <div class="desc">一站式 AI 代理机构团队——前端开发、社区运营、创意注入、现实校验，每个 Agent 都是带人格、流程和交付物的专家</div>
-            <div class="stats">
-                <span>⭐ 126.0k</span>
-                <span>🔱 20.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/usestrix/strix" class="repo-name" target="_blank">usestrix/strix</a>
-                <span class="badge today">+2137 today</span>
-            </div>
-            <div class="desc">开源 AI 渗透测试工具，自动发现并修复应用漏洞</div>
-            <div class="stats">
-                <span>⭐ 33.2k</span>
-                <span>🔱 3.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/facebook/astryx" class="repo-name" target="_blank">facebook/astryx</a>
-                <span class="badge today">+1108 today</span>
-            </div>
-            <div class="desc">Facebook 开源设计系统，完全可定制且为 AI Agent 就绪</div>
-            <div class="stats">
-                <span>⭐ 3.9k</span>
-                <span>🔱 220</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/HKUDS/Vibe-Trading" class="repo-name" target="_blank">HKUDS/Vibe-Trading</a>
-                <span class="badge today">+939 today</span>
-            </div>
-            <div class="desc">港大出品：你的个人 AI 交易代理</div>
-            <div class="stats">
-                <span>⭐ 17.6k</span>
-                <span>🔱 2.9k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #e34c26"></div>
-                <a href="https://github.com/hasaneyldrm/exercises-dataset" class="repo-name" target="_blank">hasaneyldrm/exercises-dataset</a>
-                <span class="badge today">+938 today</span>
-            </div>
-            <div class="desc">433 个健身动作的综合数据集，含名称、分类、目标肌群、器械、说明、缩略图和动画视频</div>
-            <div class="stats">
-                <span>⭐ 9.6k</span>
-                <span>🔱 1.1k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/JuliusBrussee/caveman" class="repo-name" target="_blank">JuliusBrussee/caveman</a>
-                <span class="badge today">+926 today</span>
-            </div>
-            <div class="desc">🪨 能少说就少说——Claude Code 技能，用原始人语法砍掉 65% 的 token</div>
-            <div class="stats">
-                <span>⭐ 81.9k</span>
-                <span>🔱 4.6k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #89e051"></div>
-                <a href="https://github.com/obra/superpowers" class="repo-name" target="_blank">obra/superpowers</a>
-                <span class="badge today">+897 today</span>
-            </div>
-            <div class="desc">一套真正可用的 Agent 技能框架与软件开发方法论</div>
-            <div class="stats">
-                <span>⭐ 244.9k</span>
-                <span>🔱 21.7k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/diegosouzapw/OmniRoute" class="repo-name" target="_blank">diegosouzapw/OmniRoute</a>
-                <span class="badge today">+837 today</span>
-            </div>
-            <div class="desc">永不停歇的免费 AI 网关：一个端点接入 231+ 提供商（50+ 免费），支持 Claude Code/Codex/Cursor/Cline/Copilot</div>
-            <div class="stats">
-                <span>⭐ 10.4k</span>
-                <span>🔱 1.5k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/NousResearch/hermes-agent" class="repo-name" target="_blank">NousResearch/hermes-agent</a>
-                <span class="badge today">+829 today</span>
-            </div>
-            <div class="desc">与你一同成长的 AI Agent（Nous Research 出品）</div>
-            <div class="stats">
-                <span>⭐ 208.3k</span>
-                <span>🔱 37.9k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #dea584"></div>
-                <a href="https://github.com/ogulcancelik/herdr" class="repo-name" target="_blank">ogulcancelik/herdr</a>
-                <span class="badge today">+571 today</span>
-            </div>
-            <div class="desc">住在终端里的 Agent 多路复用器</div>
-            <div class="stats">
-                <span>⭐ 10.3k</span>
-                <span>🔱 611</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/browser-use/video-use" class="repo-name" target="_blank">browser-use/video-use</a>
-                <span class="badge today">+554 today</span>
-            </div>
-            <div class="desc">用编程 Agent 编辑视频</div>
-            <div class="stats">
-                <span>⭐ 14.1k</span>
-                <span>🔱 1.7k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/firecrawl/firecrawl" class="repo-name" target="_blank">firecrawl/firecrawl</a>
-                <span class="badge today">+535 today</span>
-            </div>
-            <div class="desc">大规模搜索、抓取和与 Web 交互的 API 🔥</div>
-            <div class="stats">
-                <span>⭐ 143.4k</span>
-                <span>🔱 8.3k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/affaan-m/ECC" class="repo-name" target="_blank">affaan-m/ECC</a>
-                <span class="badge today">+486 today</span>
-            </div>
-            <div class="desc">Agent Harness 性能优化系统——技能、本能、记忆、安全，面向 Claude Code/Codex/Opencode/Cursor 等</div>
-            <div class="stats">
-                <span>⭐ 225.4k</span>
-                <span>🔱 34.5k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/tt-a1i/archify" class="repo-name" target="_blank">tt-a1i/archify</a>
-                <span class="badge today">+484 today</span>
-            </div>
-            <div class="desc">Agent 技能：生成精美架构图，支持暗/亮主题切换和 PNG/JPEG/WebP/SVG 导出</div>
-            <div class="stats">
-                <span>⭐ 2.3k</span>
-                <span>🔱 144</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/yikart/AiToEarn" class="repo-name" target="_blank">yikart/AiToEarn</a>
-                <span class="badge today">+462 today</span>
-            </div>
-            <div class="desc">用 AI 来赚钱！自动化内容创作与变现工具</div>
-            <div class="stats">
-                <span>⭐ 23.0k</span>
-                <span>🔱 3.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/santifer/career-ops" class="repo-name" target="_blank">santifer/career-ops</a>
-                <span class="badge today">+372 today</span>
-            </div>
-            <div class="desc">基于 Claude Code 的 AI 求职系统——14 种技能模式、Go 仪表盘、PDF 生成、批量处理</div>
-            <div class="stats">
-                <span>⭐ 58.2k</span>
-                <span>🔱 11.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/public-apis/public-apis" class="repo-name" target="_blank">public-apis/public-apis</a>
-                <span class="badge today">+366 today</span>
-            </div>
-            <div class="desc">免费 API 集合列表</div>
-            <div class="stats">
-                <span>⭐ 446.2k</span>
-                <span>🔱 49.0k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/logto-io/logto" class="repo-name" target="_blank">logto-io/logto</a>
-                <span class="badge today">+361 today</span>
-            </div>
-            <div class="desc">🧑‍🚀 面向 SaaS 和 AI 应用的认证授权基础设施，基于 OIDC 和 OAuth 2.1</div>
-            <div class="stats">
-                <span>⭐ 13.5k</span>
-                <span>🔱 933</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/openai/codex-plugin-cc" class="repo-name" target="_blank">openai/codex-plugin-cc</a>
-                <span class="badge today">+352 today</span>
-            </div>
-            <div class="desc">在 Claude Code 中使用 Codex 进行代码审查或任务委派</div>
-            <div class="stats">
-                <span>⭐ 22.8k</span>
-                <span>🔱 1.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #dea584"></div>
-                <a href="https://github.com/TencentCloud/CubeSandbox" class="repo-name" target="_blank">TencentCloud/CubeSandbox</a>
-                <span class="badge today">+314 today</span>
-            </div>
-            <div class="desc">腾讯云出品：即时、并发、安全、轻量的 AI Agent 沙箱</div>
-            <div class="stats">
-                <span>⭐ 7.0k</span>
-                <span>🔱 586</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/OpenCut-app/OpenCut" class="repo-name" target="_blank">OpenCut-app/OpenCut</a>
-                <span class="badge today">+294 today</span>
-            </div>
-            <div class="desc">开源版 CapCut 替代品</div>
-            <div class="stats">
-                <span>⭐ 61.4k</span>
-                <span>🔱 6.6k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/ruvnet/ruflo" class="repo-name" target="_blank">ruvnet/ruflo</a>
-                <span class="badge today">+263 today</span>
-            </div>
-            <div class="desc">🌊 领先的 Agent 元框架——部署多智能体集群、协调自治工作流、构建对话式 AI 系统</div>
-            <div class="stats">
-                <span>⭐ 62.7k</span>
-                <span>🔱 7.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #00ADD8"></div>
-                <a href="https://github.com/yorukot/superfile" class="repo-name" target="_blank">yorukot/superfile</a>
-                <span class="badge today">+252 today</span>
-            </div>
-            <div class="desc">超酷超现代的终端文件管理器</div>
-            <div class="stats">
-                <span>⭐ 18.2k</span>
-                <span>🔱 489</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/openclaw/openclaw" class="repo-name" target="_blank">openclaw/openclaw</a>
-                <span class="badge today">+243 today</span>
-            </div>
-            <div class="desc">你的个人 AI 助手，任意操作系统、任意平台 🦞</div>
-            <div class="stats">
-                <span>⭐ 381.5k</span>
-                <span>🔱 80.0k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #f1e05a"></div>
-                <a href="https://github.com/decolua/9router" class="repo-name" target="_blank">decolua/9router</a>
-                <span class="badge today">+231 today</span>
-            </div>
-            <div class="desc">无限免费 AI 编码——将 Claude Code/Codex/Cursor/Cline/Copilot 连接到免费 Claude/GPT/Gemini</div>
-            <div class="stats">
-                <span>⭐ 19.6k</span>
-                <span>🔱 3.2k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/clash-verge-rev/clash-verge-rev" class="repo-name" target="_blank">clash-verge-rev/clash-verge-rev</a>
-                <span class="badge today">+220 today</span>
-            </div>
-            <div class="desc">基于 Tauri 的现代 GUI 代理客户端，支持 Windows/macOS/Linux</div>
-            <div class="stats">
-                <span>⭐ 129.3k</span>
-                <span>🔱 9.4k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/browser-use/browser-use" class="repo-name" target="_blank">browser-use/browser-use</a>
-                <span class="badge today">+205 today</span>
-            </div>
-            <div class="desc">🌐 让网站对 AI Agent 可访问，轻松自动化在线任务</div>
-            <div class="stats">
-                <span>⭐ 102.3k</span>
-                <span>🔱 11.3k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3572A5"></div>
-                <a href="https://github.com/anthropics/claude-code" class="repo-name" target="_blank">anthropics/claude-code</a>
-                <span class="badge today">+202 today</span>
-            </div>
-            <div class="desc">Anthropic 出品的终端内 Agent 编码工具，理解你的代码库，用自然语言加速开发</div>
-            <div class="stats">
-                <span>⭐ 135.6k</span>
-                <span>🔱 21.8k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/vercel-labs/skills" class="repo-name" target="_blank">vercel-labs/skills</a>
-                <span class="badge today">+159 today</span>
-            </div>
-            <div class="desc">The open agent skills tool - npx skills</div>
-            <div class="stats">
-                <span>⭐ 24.9k</span>
-                <span>🔱 2.1k</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="header">
-                <div class="lang-dot" style="background: #3178c6"></div>
-                <a href="https://github.com/freeCodeCamp/freeCodeCamp" class="repo-name" target="_blank">freeCodeCamp/freeCodeCamp</a>
-                <span class="badge today">+145 today</span>
-            </div>
-            <div class="desc">freeCodeCamp 开源代码库和课程——免费学习数学、编程和计算机科学</div>
-            <div class="stats">
-                <span>⭐ 451.0k</span>
-                <span>🔱 45.3k</span>
-            </div>
-        </div>
-    </div>
+<h1>GitHub Trending</h1>
+<div class="subtitle">2026-07-04 · Daily Collection</div>
+    <a class="card" href="https://github.com/JuliusBrussee/caveman" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">JuliusBrussee/caveman</span>
+        <span class="badge">+2863 today</span>
+      </div>
+      <div class="desc-zh">🪨 用原始人说话方式减少65%的token消耗——Claude Code技能插件</div>
+      <div class="meta">⭐ 83.4k · 🍴 4.7k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/usestrix/strix" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">usestrix/strix</span>
+        <span class="badge">+2803 today</span>
+      </div>
+      <div class="desc-zh">开源AI渗透测试工具，自动发现并修复应用漏洞</div>
+      <div class="meta">⭐ 35.5k · 🍴 3.6k · Python</div>
+    </a>
+    <a class="card" href="https://github.com/mattpocock/skills" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#89e051"></span>
+        <span class="repo-name">mattpocock/skills</span>
+        <span class="badge">+1289 today</span>
+      </div>
+      <div class="desc-zh">面向真实工程师的Claude Code技能集，来自作者的.claude目录</div>
+      <div class="meta">⭐ 156.1k · 🍴 13.4k · Shell</div>
+    </a>
+    <a class="card" href="https://github.com/alibaba/page-agent" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">alibaba/page-agent</span>
+        <span class="badge">+1110 today</span>
+      </div>
+      <div class="desc-zh">JavaScript页面级GUI代理，用自然语言控制网页界面</div>
+      <div class="meta">⭐ 22.7k · 🍴 2.0k · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/facebook/astryx" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">facebook/astryx</span>
+        <span class="badge">+885 today</span>
+      </div>
+      <div class="desc-zh">Facebook开源设计系统，完全可定制且支持AI代理</div>
+      <div class="meta">⭐ 5.1k · 🍴 297 · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/santifer/career-ops" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">santifer/career-ops</span>
+        <span class="badge">+855 today</span>
+      </div>
+      <div class="desc-zh">基于Claude Code的AI求职系统，14种技能模式、Go仪表盘、PDF生成</div>
+      <div class="meta">⭐ 58.5k · 🍴 11.5k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/harvard-edge/cs249r_book" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">harvard-edge/cs249r_book</span>
+        <span class="badge">+793 today</span>
+      </div>
+      <div class="desc-zh">哈佛大学机器学习系统课程教材</div>
+      <div class="meta">⭐ 26.4k · 🍴 3.2k · Python</div>
+    </a>
+    <a class="card" href="https://github.com/openai/codex-plugin-cc" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">openai/codex-plugin-cc</span>
+        <span class="badge">+634 today</span>
+      </div>
+      <div class="desc-zh">在Claude Code中使用OpenAI Codex进行代码审查和任务委派</div>
+      <div class="meta">⭐ 23.6k · 🍴 1.4k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/affaan-m/ECC" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">affaan-m/ECC</span>
+        <span class="badge">+628 today</span>
+      </div>
+      <div class="desc-zh">AI代理性能优化系统：技能、本能、记忆、安全，支持多种编码代理</div>
+      <div class="meta">⭐ 225.8k · 🍴 34.5k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/Zackriya-Solutions/meetily" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#dea584"></span>
+        <span class="repo-name">Zackriya-Solutions/meetily</span>
+        <span class="badge">+607 today</span>
+      </div>
+      <div class="desc-zh">隐私优先的AI会议助手，支持本地语音转录和摘要，无需云端</div>
+      <div class="meta">⭐ 14.4k · 🍴 1.6k · Rust</div>
+    </a>
+    <a class="card" href="https://github.com/langflow-ai/langflow" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">langflow-ai/langflow</span>
+        <span class="badge">+531 today</span>
+      </div>
+      <div class="desc-zh">强大的AI代理和工作流构建与部署工具</div>
+      <div class="meta">⭐ 151.1k · 🍴 9.4k · Python</div>
+    </a>
+    <a class="card" href="https://github.com/ogulcancelik/herdr" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#dea584"></span>
+        <span class="repo-name">ogulcancelik/herdr</span>
+        <span class="badge">+478 today</span>
+      </div>
+      <div class="desc-zh">运行在终端中的AI代理多路复用器</div>
+      <div class="meta">⭐ 11.1k · 🍴 649 · Rust</div>
+    </a>
+    <a class="card" href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">asgeirtj/system_prompts_leaks</span>
+        <span class="badge">+432 today</span>
+      </div>
+      <div class="desc-zh">收集各大AI系统的提示词泄露：Claude、ChatGPT、Gemini、Grok等</div>
+      <div class="meta">⭐ 48.4k · 🍴 7.9k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/agentskills/agentskills" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">agentskills/agentskills</span>
+        <span class="badge">+406 today</span>
+      </div>
+      <div class="desc-zh">Agent Skills开放标准的规范与文档</div>
+      <div class="meta">⭐ 22.2k · 🍴 1.4k · Python</div>
+    </a>
+    <a class="card" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">ChromeDevTools/chrome-devtools-mcp</span>
+        <span class="badge">+405 today</span>
+      </div>
+      <div class="desc-zh">为编码代理提供Chrome DevTools能力</div>
+      <div class="meta">⭐ 45.6k · 🍴 3.0k · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/chthollyphile/folia-major" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">chthollyphile/folia-major</span>
+        <span class="badge">+319 today</span>
+      </div>
+      <div class="desc-zh">绚丽的歌词动画效果本地音乐播放器，支持Navidrome</div>
+      <div class="meta">⭐ 918 · 🍴 58 · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/immich-app/immich" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">immich-app/immich</span>
+        <span class="badge">+308 today</span>
+      </div>
+      <div class="desc-zh">高性能自托管照片和视频管理方案</div>
+      <div class="meta">⭐ 105.4k · 🍴 6.0k · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/pbakaus/impeccable" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">pbakaus/impeccable</span>
+        <span class="badge">+260 today</span>
+      </div>
+      <div class="desc-zh">让AI代理更擅长设计的设计语言系统</div>
+      <div class="meta">⭐ 43.4k · 🍴 2.5k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/ctxrs/ctx" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#dea584"></span>
+        <span class="repo-name">ctxrs/ctx</span>
+        <span class="badge">+244 today</span>
+      </div>
+      <div class="desc-zh">搜索本机已有的编码代理历史记录</div>
+      <div class="meta">⭐ 570 · 🍴 30 · Rust</div>
+    </a>
+    <a class="card" href="https://github.com/rommapp/romm" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">rommapp/romm</span>
+        <span class="badge">+239 today</span>
+      </div>
+      <div class="desc-zh">美观强大的自托管ROM管理器和播放器</div>
+      <div class="meta">⭐ 10.0k · 🍴 482 · Python</div>
+    </a>
+    <a class="card" href="https://github.com/Chocobozzz/PeerTube" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">Chocobozzz/PeerTube</span>
+        <span class="badge">+223 today</span>
+      </div>
+      <div class="desc-zh">基于ActivityPub联邦的视频流平台，浏览器内P2P</div>
+      <div class="meta">⭐ 15.1k · 🍴 1.8k · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/anthropics/claude-code" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">anthropics/claude-code</span>
+        <span class="badge">+221 today</span>
+      </div>
+      <div class="desc-zh">Anthropic官方终端编码代理Claude Code</div>
+      <div class="meta">⭐ 136.0k · 🍴 21.9k · Python</div>
+    </a>
+    <a class="card" href="https://github.com/tt-a1i/archify" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">tt-a1i/archify</span>
+        <span class="badge">+215 today</span>
+      </div>
+      <div class="desc-zh">为AI代理生成美观架构图，支持明暗主题和多格式导出</div>
+      <div class="meta">⭐ 2.5k · 🍴 154 · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/AnmolSaini16/mapcn" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">AnmolSaini16/mapcn</span>
+        <span class="badge">+182 today</span>
+      </div>
+      <div class="desc-zh">Beautiful map components. 100% Free, Zero config, one command setup.</div>
+      <div class="meta">⭐ 10.4k · 🍴 592 · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/yorukot/superfile" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#00ADD8"></span>
+        <span class="repo-name">yorukot/superfile</span>
+        <span class="badge">+176 today</span>
+      </div>
+      <div class="desc-zh">漂亮现代的终端文件管理器</div>
+      <div class="meta">⭐ 18.3k · 🍴 495 · Go</div>
+    </a>
+    <a class="card" href="https://github.com/ruvnet/ruflo" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3178c6"></span>
+        <span class="repo-name">ruvnet/ruflo</span>
+        <span class="badge">+166 today</span>
+      </div>
+      <div class="desc-zh">领先的代理元框架：部署多智能体群、协调自治工作流</div>
+      <div class="meta">⭐ 62.9k · 🍴 7.4k · TypeScript</div>
+    </a>
+    <a class="card" href="https://github.com/ryanmcdermott/clean-code-javascript" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#f1e05a"></span>
+        <span class="repo-name">ryanmcdermott/clean-code-javascript</span>
+        <span class="badge">+164 today</span>
+      </div>
+      <div class="desc-zh">JavaScript清洁代码概念指南（经典）</div>
+      <div class="meta">⭐ 94.7k · 🍴 12.5k · JavaScript</div>
+    </a>
+    <a class="card" href="https://github.com/huggingface/speech-to-speech" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">huggingface/speech-to-speech</span>
+        <span class="badge">+162 today</span>
+      </div>
+      <div class="desc-zh">用开源模型构建本地语音代理</div>
+      <div class="meta">⭐ 5.3k · 🍴 646 · Python</div>
+    </a>
+    <a class="card" href="https://github.com/openai/codex" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#dea584"></span>
+        <span class="repo-name">openai/codex</span>
+        <span class="badge">+159 today</span>
+      </div>
+      <div class="desc-zh">OpenAI轻量级终端编码代理</div>
+      <div class="meta">⭐ 95.4k · 🍴 14.2k · Rust</div>
+    </a>
+    <a class="card" href="https://github.com/alirezarezvani/claude-skills" target="_blank">
+      <div class="card-top">
+        <span class="dot" style="background:#3572A5"></span>
+        <span class="repo-name">alirezarezvani/claude-skills</span>
+        <span class="badge">+130 today</span>
+      </div>
+      <div class="desc-zh">337个Claude Code技能和插件，支持多种编码代理</div>
+      <div class="meta">⭐ 19.9k · 🍴 2.7k · Python</div>
+    </a>
+
+<footer>Generated by Hermes Agent · 2026-07-04</footer>
 </body>
 </html>
