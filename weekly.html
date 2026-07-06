@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GitHub 本周精选 · 2026-07-05</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #1a1a1a;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .carousel {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    will-change: transform;
+  }
+  
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  /* 封面页 */
+  .slide-cover {
+    background: linear-gradient(135deg, #A63826 0%, #8B2E1F 100%);
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 3rem;
+  }
+  
+  .cover-content {
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .github-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .github-logo svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+  
+  .github-logo span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .main-title .top5 {
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+  
+  .date-range {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+  }
+  
+  .swipe-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .swipe-hint::after {
+    content: '→';
+    font-size: 1.25rem;
+    animation: bounce 1.5s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+  }
+  
+  .watermark {
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    font-size: 20rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  
+  /* 项目页 */
+  .slide-project {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem;
+  }
+  
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .lang-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .project-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .stars-badge {
+    background: #FF6B35;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  
+  .project-desc {
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+  
+  .project-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .project-highlights {
+    background: rgba(255,255,255,0.6);
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+  }
+  
+  .highlight-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+  
+  .highlight-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* 页码指示器 */
+  .indicators {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+  
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .indicator.active {
+    width: 24px;
+    border-radius: 4px;
+    background: white;
+  }
+  
+  .slide-cover ~ .indicators .indicator {
+    background: rgba(255,255,255,0.3);
+  }
+  
+  .slide-cover ~ .indicators .indicator.active {
+    background: white;
+  }
+  
+  @media (max-width: 768px) {
+    .main-title { font-size: 2rem; }
+    .project-name { font-size: 1.25rem; }
+    .project-desc { font-size: 1.1rem; }
+    .slide { padding: 2rem; }
+    .slide-cover { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="carousel">
+  <div class="slides" id="slides">
+    <!-- 封面 -->
+    <div class="slide slide-cover">
+      <div class="cover-content">
+        <div class="github-logo">
+          <svg viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>GitHub</span>
+        </div>
+        <div class="subtitle">本周精选</div>
+        <h1 class="main-title">最火开源项目 <span class="top5">Top 5</span></h1>
+        <div class="date-range">6 月 29 日 - 7 月 5 日</div>
+      </div>
+      <div class="swipe-hint">滑动</div>
+      <div class="watermark">5</div>
+    </div>
+    
+    <!-- 项目 1 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="project-name">JuliusBrussee/caveman</span>
+      </div>
+      <div class="stars-badge">+18,200 ⭐ 本周</div>
+      <p class="project-desc">用原始人说话方式减少 65% 的 token 消耗——Claude Code 技能插件</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">83.4k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">4.7k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">支持 30+ AI 编码助手，一次安装全平台生效。6 个压缩级别可选，包括文言文模式。零隐私风险，无遥测无后端。</div>
+      </div>
+    </div>
+    
+    <!-- 项目 2 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="project-name">usestrix/strix</span>
+      </div>
+      <div class="stars-badge">+15,800 ⭐ 本周</div>
+      <p class="project-desc">开源 AI 渗透测试工具，自动发现并修复应用漏洞</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">35.5k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">3.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">多 Agent 协作系统，PoC 自动验证。从规则匹配转向 AI 驱动的动态探索，误报率低。支持 SARIF 报告输出和 CI/CD 集成。</div>
+      </div>
+    </div>
+    
+    <!-- 项目 3 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#89e051"></span>
+        <span class="project-name">mattpocock/skills</span>
+      </div>
+      <div class="stars-badge">+12,500 ⭐ 本周</div>
+      <p class="project-desc">面向真实工程师的 Claude Code 技能集，来自作者的 .claude 目录</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">156.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">13.4k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Shell</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">20 个推广技能，反对"氛围编程"，强调用户控制权。领域语言系统减少冗长，双轴代码审查避免上下文污染。</div>
+      </div>
+    </div>
+    
+    <!-- 项目 4 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="project-name">alibaba/page-agent</span>
+      </div>
+      <div class="stars-badge">+11,200 ⭐ 本周</div>
+      <p class="project-desc">JavaScript 页面级 GUI 代理，用自然语言控制网页界面</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">22.7k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">2.0k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">纯客户端实现，无需浏览器扩展。文本化 DOM 而非截图，使用普通 LLM 即可。一行代码集成，天然继承用户登录态。</div>
+      </div>
+    </div>
+    
+    <!-- 项目 5 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="project-name">facebook/astryx</span>
+      </div>
+      <div class="stars-badge">+8,900 ⭐ 本周</div>
+      <p class="project-desc">Facebook 开源设计系统，完全可定制且支持 AI 代理</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">5.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">297</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">150+ React 组件，Meta 内部支撑 13,000+ 应用。Agent-Ready 原生支持 AI Agent，7 个内置主题，可与 Tailwind 共存。</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 页码指示器 -->
+  <div class="indicators" id="indicators">
+    <div class="indicator active"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+  </div>
+</div>
+
+<script>
+  const slides = document.getElementById('slides');
+  const indicators = document.getElementById('indicators');
+  const totalSlides = 6;
+  let currentSlide = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  function updateSlide() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateIndicators();
+  }
+  
+  function updateIndicators() {
+    const dots = indicators.querySelectorAll('.indicator');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+  
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlide();
+    }
+  }
+  
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlide();
+    }
+  }
+  
+  // 触摸滑动
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+  }
+  
+  // 键盘导航
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+  
+  // 鼠标滚轮
+  let wheelTimeout;
+  document.addEventListener('wheel', e => {
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      if (e.deltaY > 0) nextSlide();
+      else prevSlide();
+    }, 50);
+  }, { passive: true });
+</script>
+</body>
+</html>
