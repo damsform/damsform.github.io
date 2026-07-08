@@ -1,336 +1,636 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Weekly Top 10 · 2026-07-08</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #24292e;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .header .date {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        .content {
-            padding: 30px;
-        }
-        .repo-card {
-            background: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-        .repo-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: #0366d6;
-        }
-        .repo-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .rank {
-            font-size: 2em;
-            font-weight: 700;
-            color: #667eea;
-            margin-right: 15px;
-            min-width: 50px;
-        }
-        .repo-info {
-            flex: 1;
-        }
-        .repo-name {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: #0366d6;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .repo-name:hover {
-            text-decoration: underline;
-        }
-        .repo-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 0.9em;
-            color: #586069;
-            flex-wrap: wrap;
-        }
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .stars-week {
-            background: #28a745;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85em;
-        }
-        .repo-desc {
-            color: #586069;
-            margin: 12px 0;
-            line-height: 1.5;
-        }
-        .repo-desc-zh {
-            color: #24292e;
-            font-weight: 500;
-            margin-top: 8px;
-            padding: 8px 12px;
-            background: white;
-            border-left: 3px solid #667eea;
-            border-radius: 4px;
-        }
-        .highlight {
-            display: inline-block;
-            background: #fff3cd;
-            color: #856404;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-weight: 500;
-            margin-top: 8px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #f6f8fa;
-            color: #586069;
-            font-size: 0.9em;
-        }
-        .footer a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GitHub 本周精选 · 2026-07-08</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #1a1a1a;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .carousel {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slides {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    will-change: transform;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* 封面页 */
+  .slide-cover {
+    background: linear-gradient(135deg, #A63826 0%, #8B2E1F 100%);
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 3rem;
+  }
+
+  .cover-content {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .github-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .github-logo svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  .github-logo span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .main-title .top-n {
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  .date-range {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+  }
+
+  .swipe-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .swipe-hint::after {
+    content: '→';
+    font-size: 1.25rem;
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+  }
+
+  .watermark {
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    font-size: 20rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* 项目页 */
+  .slide-project {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .lang-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .project-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stars-badge {
+    background: #FF6B35;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .project-desc {
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .project-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .project-highlights {
+    background: rgba(255,255,255,0.6);
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+  }
+
+  .highlight-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* 页码指示器 */
+  .indicators {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .indicator.active {
+    width: 24px;
+    border-radius: 4px;
+    background: white;
+  }
+
+  @media (max-width: 768px) {
+    .main-title { font-size: 2rem; }
+    .project-name { font-size: 1.25rem; }
+    .project-desc { font-size: 1.1rem; }
+    .slide { padding: 2rem; }
+    .slide-cover { padding: 2rem; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚀 GitHub Weekly Top 10</h1>
-            <div class="date">2026-07-08</div>
+<div class="carousel">
+  <div class="slides" id="slides">
+    <!-- 封面 -->
+    <div class="slide slide-cover">
+      <div class="cover-content">
+        <div class="github-logo">
+          <svg viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>GitHub</span>
         </div>
-        <div class="content">
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#1</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/usestrix/strix" class="repo-name" target="_blank">usestrix/strix</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 38,600</span>
-                            <span class="meta-item">🍴 3,922</span>
-                            <span class="meta-item">💻 Python</span>
-                            <span class="stars-week">+10,741 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">Open-source AI penetration testing tool to find and fix your app's vulnerabilities.</div>
-                <div class="repo-desc-zh">开源 AI 渗透测试工具，自动发现并修复应用漏洞</div>
-                <div class="highlight">✨ AI 安全攻防利器</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#2</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/msitarzewski/agency-agents" class="repo-name" target="_blank">msitarzewski/agency-agents</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 128,808</span>
-                            <span class="meta-item">🍴 20,941</span>
-                            <span class="meta-item">💻 Shell</span>
-                            <span class="stars-week">+8,597 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</div>
-                <div class="repo-desc-zh">一站式 AI 智能体代理公司，涵盖前端、运营、创意等各角色专家</div>
-                <div class="highlight">✨ AI 代理公司模板</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#3</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/JuliusBrussee/caveman" class="repo-name" target="_blank">JuliusBrussee/caveman</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 86,291</span>
-                            <span class="meta-item">🍴 4,810</span>
-                            <span class="meta-item">💻 JavaScript</span>
-                            <span class="stars-week">+8,066 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">🪨 why use many token when few token do trick — Claude Code skill that cuts 65% of tokens by talking like caveman</div>
-                <div class="repo-desc-zh">用「原始人语法」压缩 65% Token 用量的 Claude Code 技能</div>
-                <div class="highlight">✨ 省 Token 黑科技</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#4</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/Zackriya-Solutions/meetily" class="repo-name" target="_blank">Zackriya-Solutions/meetily</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 20,803</span>
-                            <span class="meta-item">🍴 2,080</span>
-                            <span class="meta-item">💻 Rust</span>
-                            <span class="stars-week">+7,349 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built on Rust. 100% local processing. no cloud required.</div>
-                <div class="repo-desc-zh">隐私优先的本地 AI 会议助手，支持实时转录与 Ollama 摘要</div>
-                <div class="highlight">✨ 本地化会议 AI 助手</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#5</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/Leonxlnx/taste-skill" class="repo-name" target="_blank">Leonxlnx/taste-skill</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 60,125</span>
-                            <span class="meta-item">🍴 4,084</span>
-                            <span class="meta-item">💻 JavaScript</span>
-                            <span class="stars-week">+6,365 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop</div>
-                <div class="repo-desc-zh">赋予 AI 审美品味的技能，告别千篇一律的无聊输出</div>
-                <div class="highlight">✨ 让 AI 有品味</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#6</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/DeusData/codebase-memory-mcp" class="repo-name" target="_blank">DeusData/codebase-memory-mcp</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 28,043</span>
-                            <span class="meta-item">🍴 2,085</span>
-                            <span class="meta-item">💻 C</span>
-                            <span class="stars-week">+5,457 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.</div>
-                <div class="repo-desc-zh">高性能代码知识图谱 MCP 服务器，毫秒级索引，减少 99% Token</div>
-                <div class="highlight">✨ 代码知识图谱引擎</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#7</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/MadsLorentzen/ai-job-search" class="repo-name" target="_blank">MadsLorentzen/ai-job-search</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 11,122</span>
-                            <span class="meta-item">🍴 3,710</span>
-                            <span class="meta-item">💻 TypeScript</span>
-                            <span class="stars-week">+5,363 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews.</div>
-                <div class="repo-desc-zh">基于 Claude Code 的 AI 求职框架，自动评估岗位、定制简历与面试准备</div>
-                <div class="highlight">✨ AI 求职全流程</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#8</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/calesthio/OpenMontage" class="repo-name" target="_blank">calesthio/OpenMontage</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 35,066</span>
-                            <span class="meta-item">🍴 4,034</span>
-                            <span class="meta-item">💻 Python</span>
-                            <span class="stars-week">+5,359 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">World's first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</div>
-                <div class="repo-desc-zh">全球首个开源 AI 视频制作系统，12 条流水线、52 个工具、500+ 技能</div>
-                <div class="highlight">✨ 开源 AI 视频工坊</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#9</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/asgeirtj/system_prompts_leaks" class="repo-name" target="_blank">asgeirtj/system_prompts_leaks</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 53,064</span>
-                            <span class="meta-item">🍴 8,647</span>
-                            <span class="meta-item">💻 JavaScript</span>
-                            <span class="stars-week">+5,337 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">Extracted system prompts from Anthropic - Claude Fable 5, Opus 4.8, Claude Code, Claude Design. OpenAI - ChatGPT 5.5 Thinking, GPT 5.5 Instant, Codex. Google - Gemini 3.5 Flash, 3.1 Pro, Antigravity. xAI - Grok, Cursor, Copilot, VS Code, Perplexity, and more.</div>
-                <div class="repo-desc-zh">收集各大 AI 模型（Claude/GPT/Gemini/Grok 等）的系统提示词泄露合集</div>
-                <div class="highlight">✨ AI 提示词泄露合集</div>
-            </div>
-
-            <div class="repo-card">
-                <div class="repo-header">
-                    <div class="rank">#10</div>
-                    <div class="repo-info">
-                        <a href="https://github.com/facebook/astryx" class="repo-name" target="_blank">facebook/astryx</a>
-                        <div class="repo-meta">
-                            <span class="meta-item">⭐ 6,875</span>
-                            <span class="meta-item">🍴 447</span>
-                            <span class="meta-item">💻 TypeScript</span>
-                            <span class="stars-week">+5,247 this week</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-desc">An open source design system that's fully customizable and agent ready</div>
-                <div class="repo-desc-zh">Facebook 开源的全可定制、面向 AI Agent 的设计系统</div>
-                <div class="highlight">✨ Meta 出品 Agent 设计系统</div>
-            </div>
-
-        </div>
-        <div class="footer">
-            <p>Generated by Hermes Agent · Data from GitHub Trending</p>
-        </div>
+        <div class="subtitle">本周精选</div>
+        <h1 class="main-title">最火开源项目 <span class="top-n">Top 10</span></h1>
+        <div class="date-range">6月29日 - 7月5日</div>
+      </div>
+      <div class="swipe-hint">滑动</div>
+      <div class="watermark">10</div>
     </div>
+
+    <!-- 项目 1 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="project-name">usestrix/strix</span>
+      </div>
+      <div class="stars-badge">+10.7k ⭐ 本周</div>
+      <p class="project-desc">开源 AI 渗透测试工具，自动发现并修复应用漏洞</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">38.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">3.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">AI 安全攻防利器</div>
+      </div>
+    </div>
+    <!-- 项目 2 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#89e051"></span>
+        <span class="project-name">msitarzewski/agency-agents</span>
+      </div>
+      <div class="stars-badge">+8.6k ⭐ 本周</div>
+      <p class="project-desc">一站式 AI 智能体代理公司，涵盖前端、运营、创意等各角色专家</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">128.8k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">20.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Shell</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">AI 代理公司模板</div>
+      </div>
+    </div>
+    <!-- 项目 3 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="project-name">JuliusBrussee/caveman</span>
+      </div>
+      <div class="stars-badge">+8.1k ⭐ 本周</div>
+      <p class="project-desc">用「原始人语法」压缩 65% Token 用量的 Claude Code 技能</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">86.3k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">4.8k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">省 Token 黑科技</div>
+      </div>
+    </div>
+    <!-- 项目 4 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#dea584"></span>
+        <span class="project-name">Zackriya-Solutions/meetily</span>
+      </div>
+      <div class="stars-badge">+7.3k ⭐ 本周</div>
+      <p class="project-desc">隐私优先的本地 AI 会议助手，支持实时转录与 Ollama 摘要</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">20.8k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">2.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Rust</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">本地化会议 AI 助手</div>
+      </div>
+    </div>
+    <!-- 项目 5 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="project-name">Leonxlnx/taste-skill</span>
+      </div>
+      <div class="stars-badge">+6.4k ⭐ 本周</div>
+      <p class="project-desc">赋予 AI 审美品味的技能，告别千篇一律的无聊输出</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">60.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">4.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">让 AI 有品味</div>
+      </div>
+    </div>
+    <!-- 项目 6 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#555555"></span>
+        <span class="project-name">DeusData/codebase-memory-mcp</span>
+      </div>
+      <div class="stars-badge">+5.5k ⭐ 本周</div>
+      <p class="project-desc">高性能代码知识图谱 MCP 服务器，毫秒级索引，减少 99% Token</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">28.0k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">2.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">C</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">代码知识图谱引擎</div>
+      </div>
+    </div>
+    <!-- 项目 7 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="project-name">MadsLorentzen/ai-job-search</span>
+      </div>
+      <div class="stars-badge">+5.4k ⭐ 本周</div>
+      <p class="project-desc">基于 Claude Code 的 AI 求职框架，自动评估岗位、定制简历与面试准备</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">11.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">3.7k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">AI 求职全流程</div>
+      </div>
+    </div>
+    <!-- 项目 8 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="project-name">calesthio/OpenMontage</span>
+      </div>
+      <div class="stars-badge">+5.4k ⭐ 本周</div>
+      <p class="project-desc">全球首个开源 AI 视频制作系统，12 条流水线、52 个工具、500+ 技能</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">35.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">4.0k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">开源 AI 视频工坊</div>
+      </div>
+    </div>
+    <!-- 项目 9 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="project-name">asgeirtj/system_prompts_leaks</span>
+      </div>
+      <div class="stars-badge">+5.3k ⭐ 本周</div>
+      <p class="project-desc">收集各大 AI 模型（Claude/GPT/Gemini/Grok 等）的系统提示词泄露合集</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">53.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">8.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">AI 提示词泄露合集</div>
+      </div>
+    </div>
+    <!-- 项目 10 -->
+    <div class="slide slide-project">
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3178c6"></span>
+        <span class="project-name">facebook/astryx</span>
+      </div>
+      <div class="stars-badge">+5.2k ⭐ 本周</div>
+      <p class="project-desc">Facebook 开源的全可定制、面向 AI Agent 的设计系统</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">6.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">447</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">Meta 出品 Agent 设计系统</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页码指示器 -->
+  <div class="indicators" id="indicators">
+    <div class="indicator active"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+  </div>
+</div>
+
+<script>
+  const slides = document.getElementById('slides');
+  const indicators = document.getElementById('indicators');
+  const totalSlides = 11;
+  let currentSlide = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function updateSlide() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateIndicators();
+  }
+
+  function updateIndicators() {
+    const dots = indicators.querySelectorAll('.indicator');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlide();
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlide();
+    }
+  }
+
+  // 触摸滑动
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+  }
+
+  // 键盘导航
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // 鼠标滚轮
+  let wheelTimeout;
+  document.addEventListener('wheel', e => {
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      if (e.deltaY > 0) nextSlide();
+      else prevSlide();
+    }, 50);
+  }, { passive: true });
+</script>
 </body>
 </html>
