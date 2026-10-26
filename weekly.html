@@ -3,245 +3,574 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>GitHub 本周精选 · 2026-10-25</title>
+<title>GitHub 本周精选 · 2026-10-26</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a1a; overflow: hidden; height: 100vh; -webkit-tap-highlight-color: transparent; }
-  .carousel { width: 100%; height: 100vh; overflow: hidden; position: relative; }
-  .slides { display: flex; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; will-change: transform; }
-  .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
-  .slide-cover { background: linear-gradient(135deg, #A63826 0%, #8B2E1F 100%); flex-direction: column; justify-content: center; text-align: left; padding: 3rem; }
-  .cover-content { max-width: 600px; width: 100%; }
-  .github-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-  .github-logo svg { width: 32px; height: 32px; fill: white; }
-  .github-logo span { font-size: 1.25rem; font-weight: 600; color: white; }
-  .subtitle { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
-  .main-title { font-size: 2.5rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 1rem; }
-  .main-title .top-n { color: rgba(255,255,255,0.8); font-weight: 600; }
-  .date-range { font-size: 1rem; color: rgba(255,255,255,0.9); margin-bottom: 3rem; }
-  .swipe-hint { position: absolute; bottom: 2rem; left: 3rem; color: rgba(255,255,255,0.6); font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
-  .swipe-hint::after { content: '→'; font-size: 1.25rem; animation: bounce 1.5s infinite; }
-  @keyframes bounce { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
-  .watermark { position: absolute; right: -2rem; bottom: -2rem; font-size: 20rem; font-weight: 700; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
-  .slide-project { background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%); flex-direction: column; align-items: flex-start; padding: 3rem; }
-  .rank-watermark { position: absolute; right: 2rem; top: 1rem; font-size: 12rem; font-weight: 700; color: rgba(0,0,0,0.04); line-height: 1; pointer-events: none; font-family: 'Inter', sans-serif; }
-  .project-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-  .lang-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .project-name { font-size: 1.5rem; font-weight: 600; color: #1a1a1a; font-family: 'JetBrains Mono', monospace; }
-  .stars-badge { background: #FF6B35; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; margin-bottom: 2rem; }
-  .project-desc { font-size: 1.25rem; color: #4a4a4a; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; }
-  .project-stats { display: flex; gap: 2rem; margin-bottom: 2rem; }
-  .stat { display: flex; flex-direction: column; }
-  .stat-label { font-size: 0.75rem; color: #888; margin-bottom: 0.25rem; }
-  .stat-value { font-size: 1.5rem; font-weight: 600; color: #1a1a1a; }
-  .project-highlights { background: rgba(255,255,255,0.6); padding: 1.5rem; border-radius: 12px; max-width: 600px; }
-  .highlight-title { font-size: 0.875rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem; }
-  .highlight-text { font-size: 0.95rem; color: #555; line-height: 1.5; }
-  .indicators { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 100; }
-  .indicator { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s ease; }
-  .indicator.active { width: 24px; border-radius: 4px; background: white; }
-  @media (max-width: 768px) { .main-title { font-size: 2rem; } .project-name { font-size: 1.25rem; } .project-desc { font-size: 1.1rem; } .slide { padding: 2rem; } .slide-cover { padding: 2rem; } }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #1a1a1a;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .carousel {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slides {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    will-change: transform;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* 封面页 */
+  .slide-cover {
+    background: linear-gradient(135deg, #A63826 0%, #8B2E1F 100%);
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 3rem;
+  }
+
+  .cover-content {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .github-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .github-logo svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  .github-logo span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .main-title .top-n {
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  .date-range {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+  }
+
+  .swipe-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .swipe-hint::after {
+    content: '→';
+    font-size: 1.25rem;
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+  }
+
+  .watermark {
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    font-size: 20rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* 项目页 */
+  .slide-project {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem;
+  }
+
+  .rank-watermark {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    font-size: 12rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .lang-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .project-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stars-badge {
+    background: #FF6B35;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .project-desc {
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .project-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .project-highlights {
+    background: rgba(255,255,255,0.6);
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+  }
+
+  .highlight-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* 页码指示器 */
+  .indicators {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .indicator.active {
+    width: 24px;
+    border-radius: 4px;
+    background: white;
+  }
+
+  @media (max-width: 768px) {
+    .main-title { font-size: 2rem; }
+    .project-name { font-size: 1.25rem; }
+    .project-desc { font-size: 1.1rem; }
+    .slide { padding: 2rem; }
+    .slide-cover { padding: 2rem; }
+  }
 </style>
 </head>
 <body>
 <div class="carousel">
   <div class="slides" id="slides">
+    <!-- 封面 -->
     <div class="slide slide-cover">
       <div class="cover-content">
         <div class="github-logo">
-          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
           <span>GitHub</span>
         </div>
         <div class="subtitle">本周精选</div>
         <h1 class="main-title">最火开源项目 <span class="top-n">Top 10</span></h1>
-        <div class="date-range">10月12日 - 10月18</div>
+        <div class="date-range">10月19日 - 10月25日</div>
       </div>
       <div class="swipe-hint">滑动</div>
       <div class="watermark">10</div>
     </div>
 
+    <!-- 项目 1 -->
     <div class="slide slide-project">
       <div class="rank-watermark">1</div>
       <div class="project-header">
-        <span class="lang-dot" style="background:#3178c6"></span>
-        <span class="project-name">morluto/rea</span>
+        <span class="lang-dot" style="background:#f1e05a"></span>
+        <span class="project-name">cloudflare/security-audit-skill</span>
       </div>
-      <div class="stars-badge">+78.6k ⭐ 本周</div>
-      <p class="project-desc">使用 AI Agent 逆向一切——从 App 行为到底层二进制文件，全自动逆向工程平台。</p>
+      <div class="stars-badge">+15.1k ⭐ 本周</div>
+      <p class="project-desc">Cloudflare 推出的编码代理安全审计技能，支持多阶段安全审计，生成独立验证的机器可读报告</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">379.0k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">94.7k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">TypeScript</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">47.0k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">2.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">AI 驱动的万能逆向工具</div>
+        <div class="highlight-text">AI 安全审计自动化</div>
       </div>
     </div>
+    <!-- 项目 2 -->
     <div class="slide slide-project">
       <div class="rank-watermark">2</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#3572A5"></span>
         <span class="project-name">debpalash/VoiceStudio</span>
       </div>
-      <div class="stars-badge">+12.2k ⭐ 本周</div>
-      <p class="project-desc">开源本地化 ElevenLabs 替代品，支持语音克隆、配音、听写、转录及有声书制作，覆盖 646 种语言。</p>
+      <div class="stars-badge">+11.8k ⭐ 本周</div>
+      <p class="project-desc">开源本地化语音工作室，ElevenLabs 替代品，支持语音克隆、视频配音、听写转录和有声书制作，覆盖 646 种语言</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">85.1k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">9.4k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">Python</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">86.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">9.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">本地化语音克隆全能工具</div>
+        <div class="highlight-text">本地化语音全能工具</div>
       </div>
     </div>
+    <!-- 项目 3 -->
     <div class="slide slide-project">
       <div class="rank-watermark">3</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#f1e05a"></span>
-        <span class="project-name">cloudflare/security-audit-skill</span>
-      </div>
-      <div class="stars-badge">+12.7k ⭐ 本周</div>
-      <p class="project-desc">Cloudflare 官方出品的编码 Agent 安全审计技能，支持多阶段安全扫描，输出可机器读取的验证结果。</p>
-      <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">44.7k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">2.8k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">JavaScript</span></div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Cloudflare 官方安全审计插件</div>
-      </div>
-    </div>
-    <div class="slide slide-project">
-      <div class="rank-watermark">4</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#3178c6"></span>
         <span class="project-name">stablyai/orca</span>
       </div>
-      <div class="stars-badge">+9.8k ⭐ 本周</div>
-      <p class="project-desc">多 Agent 协作 IDE，支持 Claude Code、Grok Bot 等多种编码 Agent，桌面/移动/远程全平台可用。</p>
+      <div class="stars-badge">+9.6k ⭐ 本周</div>
+      <p class="project-desc">多智能体协作平台，支持同时运行多个编码代理（如 Grok Bot、Claude Code），可用自己的订阅，支持桌面、移动端和远程运行时</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">105.0k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">6.6k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">TypeScript</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">105.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">6.7k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">多 Agent 协作编程 IDE</div>
+        <div class="highlight-text">多 Agent 协作 IDE</div>
       </div>
     </div>
+    <!-- 项目 4 -->
     <div class="slide slide-project">
-      <div class="rank-watermark">5</div>
+      <div class="rank-watermark">4</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#f1e05a"></span>
         <span class="project-name">DietrichGebert/ponytail</span>
       </div>
-      <div class="stars-badge">+9.7k ⭐ 本周</div>
-      <p class="project-desc">让你的 AI Agent 像最懒的资深开发者一样思考——最好的代码就是从不写的代码。</p>
+      <div class="stars-badge">+9.5k ⭐ 本周</div>
+      <p class="project-desc">让 AI 代理像最懒的资深开发者一样思考——最好的代码就是你从未写过的代码。一种极简主义的 AI 编程哲学</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">175.6k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">9.6k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">JavaScript</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">176.2k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">9.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">JavaScript</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">让 AI 像老手一样偷懒</div>
+        <div class="highlight-text">极简 AI 编程哲学</div>
       </div>
     </div>
+    <!-- 项目 5 -->
     <div class="slide slide-project">
-      <div class="rank-watermark">6</div>
+      <div class="rank-watermark">5</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#dea584"></span>
         <span class="project-name">xerj-org/xerj</span>
       </div>
-      <div class="stars-badge">+8.1k ⭐ 本周</div>
-      <p class="project-desc">本地优先的 AI Agent 搜索引擎与 MCP 服务器，单 Rust 二进制文件即可索引代码/文档/日志/PDF，支持全文、向量和混合搜索。</p>
+      <div class="stars-badge">+7.6k ⭐ 本周</div>
+      <p class="project-desc">本地优先的搜索引擎和 MCP 服务器，单个 Rust 二进制文件即可索引代码、文档、日志、PDF 等，支持全文/向量/混合搜索，为 AI 代理提供记忆和 RAG 能力</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">15.3k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">1.1k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">Rust</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">15.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">1.1k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Rust</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Rust 写的 Agent 本地搜索引擎</div>
+        <div class="highlight-text">AI Agent 本地搜索引擎</div>
       </div>
     </div>
+    <!-- 项目 6 -->
     <div class="slide slide-project">
-      <div class="rank-watermark">7</div>
+      <div class="rank-watermark">6</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#3572A5"></span>
         <span class="project-name">Graphify-Labs/graphify</span>
       </div>
       <div class="stars-badge">+6.9k ⭐ 本周</div>
-      <p class="project-desc">将代码库、文档、SQL、配置和 PDF 转为可查询的知识图谱，支持 Claude Code/Cursor/Codex 等，纯本地确定性解析。</p>
+      <p class="project-desc">将任何代码库（含文档、SQL 模式、配置和 PDF）转化为可查询的知识图谱，支持 Claude Code、Cursor、Codex 和 Gemini CLI，本地确定性 AST 解析，无需向量存储</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">134.5k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">12.8k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">Python</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">135.3k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">12.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">代码库秒变知识图谱</div>
+        <div class="highlight-text">代码库知识图谱化</div>
       </div>
     </div>
+    <!-- 项目 7 -->
     <div class="slide slide-project">
-      <div class="rank-watermark">8</div>
+      <div class="rank-watermark">7</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#3178c6"></span>
         <span class="project-name">anomalyco/opencode</span>
       </div>
-      <div class="stars-badge">+6.9k ⭐ 本周</div>
-      <p class="project-desc">开源编码 Agent，终端原生的 AI 编程助手，支持多模型切换。</p>
+      <div class="stars-badge">+5.9k ⭐ 本周</div>
+      <p class="project-desc">开源编码代理，一个功能完整的 AI 编程助手，支持多种编程场景和工具集成</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">221.1k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">29.6k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">TypeScript</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">221.5k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">29.6k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">开源终端 AI 编程 Agent</div>
+        <div class="highlight-text">开源编码 Agent 标杆</div>
       </div>
     </div>
+    <!-- 项目 8 -->
     <div class="slide slide-project">
-      <div class="rank-watermark">9</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#f1e05a"></span>
-        <span class="project-name">affaan-m/ECC</span>
-      </div>
-      <div class="stars-badge">+6.1k ⭐ 本周</div>
-      <p class="project-desc">Agent 性能优化系统，为 Claude Code/Codex/Cursor 等提供技能、本能、记忆和安全增强。</p>
-      <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">288.1k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">42.7k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">JavaScript</span></div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Agent 性能优化增强框架</div>
-      </div>
-    </div>
-    <div class="slide slide-project">
-      <div class="rank-watermark">10</div>
+      <div class="rank-watermark">8</div>
       <div class="project-header">
         <span class="lang-dot" style="background:#3178c6"></span>
         <span class="project-name">heygen-com/hyperframes</span>
       </div>
       <div class="stars-badge">+5.6k ⭐ 本周</div>
-      <p class="project-desc">用 HTML 写视频脚本，直接渲染成视频——专为 AI Agent 设计的程序化视频生成引擎。</p>
+      <p class="project-desc">用 HTML 写代码即可渲染视频，专为 AI 代理设计的视频生成框架，由 HeyGen 团队开源</p>
       <div class="project-stats">
-        <div class="stat"><span class="stat-label">总 Stars</span><span class="stat-value">71.5k</span></div>
-        <div class="stat"><span class="stat-label">Forks</span><span class="stat-value">6.5k</span></div>
-        <div class="stat"><span class="stat-label">语言</span><span class="stat-value">TypeScript</span></div>
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">72.2k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">6.5k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">TypeScript</span>
+        </div>
       </div>
       <div class="project-highlights">
         <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">HTML 写脚本即渲染视频</div>
+        <div class="highlight-text">HTML 写视频生成</div>
+      </div>
+    </div>
+    <!-- 项目 9 -->
+    <div class="slide slide-project">
+      <div class="rank-watermark">9</div>
+      <div class="project-header">
+        <span class="lang-dot" style="background:#3572A5"></span>
+        <span class="project-name">Comfy-Org/ComfyUI</span>
+      </div>
+      <div class="stars-badge">+4.8k ⭐ 本周</div>
+      <p class="project-desc">最强大的模块化扩散模型 GUI，基于图/节点界面，提供 API 和后端，是世界上最快的本地推理引擎</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">143.0k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">16.9k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Python</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">AI 绘图节点编辑器</div>
+      </div>
+    </div>
+    <!-- 项目 10 -->
+    <div class="slide slide-project">
+      <div class="rank-watermark">10</div>
+      <div class="project-header">
+        <span class="lang-dot" style="background:#dea584"></span>
+        <span class="project-name">pbakaus/impeccable</span>
+      </div>
+      <div class="stars-badge">+4.7k ⭐ 本周</div>
+      <p class="project-desc">一种设计语言系统，让你的 AI 编程代理在设计方面表现得更好，提升 AI 生成 UI 的质量</p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-label">总 Stars</span>
+          <span class="stat-value">87.8k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Forks</span>
+          <span class="stat-value">5.2k</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">语言</span>
+          <span class="stat-value">Rust</span>
+        </div>
+      </div>
+      <div class="project-highlights">
+        <div class="highlight-title">✨ 亮点</div>
+        <div class="highlight-text">提升 AI 设计能力</div>
       </div>
     </div>
   </div>
+
+  <!-- 页码指示器 -->
   <div class="indicators" id="indicators">
     <div class="indicator active"></div>
     <div class="indicator"></div>
@@ -256,6 +585,7 @@
     <div class="indicator"></div>
   </div>
 </div>
+
 <script>
   const slides = document.getElementById('slides');
   const indicators = document.getElementById('indicators');
@@ -263,16 +593,66 @@
   let currentSlide = 0;
   let touchStartX = 0;
   let touchEndX = 0;
-  function updateSlide() { slides.style.transform = `translateX(-${currentSlide * 100}%)`; updateIndicators(); }
-  function updateIndicators() { const dots = indicators.querySelectorAll('.indicator'); dots.forEach((dot, i) => { dot.classList.toggle('active', i === currentSlide); }); }
-  function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlide(); } }
-  function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlide(); } }
-  document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-  document.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }, { passive: true });
-  function handleSwipe() { const diff = touchStartX - touchEndX; if (Math.abs(diff) > 50) { if (diff > 0) nextSlide(); else prevSlide(); } }
-  document.addEventListener('keydown', e => { if (e.key === 'ArrowRight') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+
+  function updateSlide() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateIndicators();
+  }
+
+  function updateIndicators() {
+    const dots = indicators.querySelectorAll('.indicator');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlide();
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlide();
+    }
+  }
+
+  // 触摸滑动
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+  }
+
+  // 键盘导航
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // 鼠标滚轮
   let wheelTimeout;
-  document.addEventListener('wheel', e => { clearTimeout(wheelTimeout); wheelTimeout = setTimeout(() => { if (e.deltaY > 0) nextSlide(); else prevSlide(); }, 50); }, { passive: true });
+  document.addEventListener('wheel', e => {
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(() => {
+      if (e.deltaY > 0) nextSlide();
+      else prevSlide();
+    }, 50);
+  }, { passive: true });
 </script>
 </body>
 </html>
