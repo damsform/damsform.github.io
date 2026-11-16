@@ -1,658 +1,179 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>GitHub 本周精选 · 2026-11-15</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #1a1a1a;
-    overflow: hidden;
-    height: 100vh;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .carousel {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .slides {
-    display: flex;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 100%;
-    will-change: transform;
-  }
-
-  .slide {
-    min-width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    position: relative;
-  }
-
-  /* 封面页 */
-  .slide-cover {
-    background: linear-gradient(135deg, #A63826 0%, #8B2E1F 100%);
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    padding: 3rem;
-  }
-
-  .cover-content {
-    max-width: 600px;
-    width: 100%;
-  }
-
-  .github-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .github-logo svg {
-    width: 32px;
-    height: 32px;
-    fill: white;
-  }
-
-  .github-logo span {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: white;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-  }
-
-  .main-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .main-title .top-n {
-    color: rgba(255,255,255,0.8);
-    font-weight: 600;
-  }
-
-  .date-range {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 3rem;
-  }
-
-  .swipe-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 3rem;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .swipe-hint::after {
-    content: '→';
-    font-size: 1.25rem;
-    animation: bounce 1.5s infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(8px); }
-  }
-
-  .watermark {
-    position: absolute;
-    right: -2rem;
-    bottom: -2rem;
-    font-size: 20rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.03);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  /* 项目页 */
-  .slide-project {
-    background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 3rem;
-  }
-
-  .rank-watermark {
-    position: absolute;
-    right: 2rem;
-    top: 1rem;
-    font-size: 12rem;
-    font-weight: 700;
-    color: rgba(0,0,0,0.04);
-    line-height: 1;
-    pointer-events: none;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .project-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .lang-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .project-name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .stars-badge {
-    background: #FF6B35;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
-
-  .project-desc {
-    font-size: 1.25rem;
-    color: #4a4a4a;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 600px;
-  }
-
-  .project-stats {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-    color: #888;
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
-
-  .project-highlights {
-    background: rgba(255,255,255,0.6);
-    padding: 1.5rem;
-    border-radius: 12px;
-    max-width: 600px;
-  }
-
-  .highlight-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 0.75rem;
-  }
-
-  .highlight-text {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.5;
-  }
-
-  /* 页码指示器 */
-  .indicators {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 100;
-  }
-
-  .indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transition: all 0.3s ease;
-  }
-
-  .indicator.active {
-    width: 24px;
-    border-radius: 4px;
-    background: white;
-  }
-
-  @media (max-width: 768px) {
-    .main-title { font-size: 2rem; }
-    .project-name { font-size: 1.25rem; }
-    .project-desc { font-size: 1.1rem; }
-    .slide { padding: 2rem; }
-    .slide-cover { padding: 2rem; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 本周精选 Top 10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { color: #fff; text-align: center; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .subtitle { color: rgba(255,255,255,0.9); text-align: center; font-size: 1.1em; margin-bottom: 40px; }
+        .card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.15); }
+        .rank { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; width: 36px; height: 36px; border-radius: 50%; text-align: center; line-height: 36px; font-weight: bold; margin-right: 12px; }
+        .header { display: flex; align-items: center; margin-bottom: 12px; }
+        .name { font-size: 1.3em; font-weight: 600; color: #24292e; }
+        .name a { color: inherit; text-decoration: none; }
+        .name a:hover { color: #667eea; }
+        .desc { color: #57606a; font-size: 0.95em; line-height: 1.6; margin-bottom: 12px; }
+        .desc-zh { color: #24292e; font-size: 0.95em; line-height: 1.6; margin-bottom: 12px; padding: 10px 14px; background: #f6f8fa; border-radius: 8px; border-left: 3px solid #667eea; }
+        .highlight { display: inline-block; background: #fff3cd; color: #856404; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 500; margin-bottom: 12px; }
+        .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.85em; color: #57606a; }
+        .meta span { display: flex; align-items: center; gap: 4px; }
+        .lang { background: #f1f3f5; padding: 2px 8px; border-radius: 12px; }
+        .stars-week { color: #e36209; font-weight: 600; }
+        .footer { text-align: center; color: rgba(255,255,255,0.8); margin-top: 40px; font-size: 0.9em; }
+    </style>
 </head>
 <body>
-<div class="carousel">
-  <div class="slides" id="slides">
-    <!-- 封面 -->
-    <div class="slide slide-cover">
-      <div class="cover-content">
-        <div class="github-logo">
-          <svg viewBox="0 0 16 16">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-          <span>GitHub</span>
+    <div class="container">
+        <h1>📊 GitHub 本周精选 Top 10</h1>
+        <p class="subtitle">github.com · 更新于 2026-11-16</p>
+        <div class="card">
+            <div class="header">
+                <span class="rank">1</span>
+                <span class="name"><a href="https://github.com/meta/astryx" target="_blank">meta/astryx</a></span>
+            </div>
+            <div class="desc-zh">Meta 开源的可定制设计系统，支持 AI Agent 集成，提供完整的组件库和设计工具链</div>
+            <div class="highlight">✨ Meta 出品，Agent 原生设计系统</div>
+            <div class="meta">
+                <span class="lang">TypeScript</span>
+                <span>⭐ 28,924</span>
+                <span class="stars-week">🔥 +13,501 this week</span>
+                <span>🍴 2,256</span>
+            </div>
         </div>
-        <div class="subtitle">本周精选</div>
-        <h1 class="main-title">最火开源项目 <span class="top-n">Top 10</span></h1>
-        <div class="date-range">11月2日 - 11月8日</div>
-      </div>
-      <div class="swipe-hint">滑动</div>
-      <div class="watermark">10</div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">2</span>
+                <span class="name"><a href="https://github.com/sherlock-project/sherlock" target="_blank">sherlock-project/sherlock</a></span>
+            </div>
+            <div class="desc-zh">跨社交网络用户名追踪工具，可在数百个平台上搜索特定用户名的账号</div>
+            <div class="highlight">✨ 社媒账号追踪神器，老牌项目</div>
+            <div class="meta">
+                <span class="lang">Python</span>
+                <span>⭐ 112,522</span>
+                <span class="stars-week">🔥 +10,412 this week</span>
+                <span>🍴 12,990</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">3</span>
+                <span class="name"><a href="https://github.com/pingdotgg/t3code" target="_blank">pingdotgg/t3code</a></span>
+            </div>
+            <div class="desc-zh">从任意设备远程控制 Claude Code、Codex 等 AI 编程工具的统一界面</div>
+            <div class="highlight">✨ 多端远程控制 AI 编程助手</div>
+            <div class="meta">
+                <span class="lang">TypeScript</span>
+                <span>⭐ 61,601</span>
+                <span class="stars-week">🔥 +9,260 this week</span>
+                <span>🍴 11,040</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">4</span>
+                <span class="name"><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a></span>
+            </div>
+            <div class="desc-zh">Anthropic 官方 Agent Skills 仓库，提供标准化的 AI 代理技能集合</div>
+            <div class="highlight">✨ Anthropic 官方技能库</div>
+            <div class="meta">
+                <span class="lang">Python</span>
+                <span>⭐ 195,401</span>
+                <span class="stars-week">🔥 +6,077 this week</span>
+                <span>🍴 22,967</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">5</span>
+                <span class="name"><a href="https://github.com/GoogleChrome/modern-web-guidance-src" target="_blank">GoogleChrome/modern-web-guidance-src</a></span>
+            </div>
+            <div class="desc-zh">Google Chrome 团队出品，让 AI 编程助手掌握最新 Web 最佳实践的技能包</div>
+            <div class="highlight">✨ Google 官方 Web 最佳实践</div>
+            <div class="meta">
+                <span class="lang">TypeScript</span>
+                <span>⭐ 7,242</span>
+                <span class="stars-week">🔥 +5,692 this week</span>
+                <span>🍴 605</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">6</span>
+                <span class="name"><a href="https://github.com/milind-soni/OpenMausBot" target="_blank">milind-soni/OpenMausBot</a></span>
+            </div>
+            <div class="desc-zh">开源 Grok Bot 替代品，提供虚拟机环境供 AI 机器人安全运行</div>
+            <div class="highlight">✨ 开源 Grok 替代，带虚拟机</div>
+            <div class="meta">
+                <span class="lang">TypeScript</span>
+                <span>⭐ 23,456</span>
+                <span class="stars-week">🔥 +5,463 this week</span>
+                <span>🍴 3,261</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">7</span>
+                <span class="name"><a href="https://github.com/google/elephant-goldfish-model" target="_blank">google/elephant-goldfish-model</a></span>
+            </div>
+            <div class="desc-zh">Google 开源的 AI 辅助软件设计与代码审查插件</div>
+            <div class="highlight">✨ Google 开源 AI 代码审查插件</div>
+            <div class="meta">
+                <span class="lang">Python</span>
+                <span>⭐ 19,809</span>
+                <span class="stars-week">🔥 +5,060 this week</span>
+                <span>🍴 1,467</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">8</span>
+                <span class="name"><a href="https://github.com/vercel-labs/agent-desktop" target="_blank">vercel-labs/agent-desktop</a></span>
+            </div>
+            <div class="desc-zh">Vercel 出品的 AI 代理桌面控制 CLI，让 AI 能操作电脑完成任务</div>
+            <div class="highlight">✨ Vercel AI 桌面控制工具</div>
+            <div class="meta">
+                <span class="lang">Rust</span>
+                <span>⭐ 24,216</span>
+                <span class="stars-week">🔥 +4,719 this week</span>
+                <span>🍴 1,799</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">9</span>
+                <span class="name"><a href="https://github.com/we-promise/sure" target="_blank">we-promise/sure</a></span>
+            </div>
+            <div class="desc-zh">面向所有人的个人理财应用，开源社区驱动的财务管理工具</div>
+            <div class="highlight">✨ 开源个人理财应用</div>
+            <div class="meta">
+                <span class="lang">Ruby</span>
+                <span>⭐ 15,728</span>
+                <span class="stars-week">🔥 +4,556 this week</span>
+                <span>🍴 1,377</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <span class="rank">10</span>
+                <span class="name"><a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank">ZhuLinsen/daily_stock_analysis</a></span>
+            </div>
+            <div class="desc-zh">LLM 驱动的多市场股票智能分析系统，支持多源行情、实时新闻、决策看板与自动推送</div>
+            <div class="highlight">✨ AI 股票分析，零成本运行</div>
+            <div class="meta">
+                <span class="lang">Python</span>
+                <span>⭐ 72,533</span>
+                <span class="stars-week">🔥 +4,548 this week</span>
+                <span>🍴 57,577</span>
+            </div>
+        </div>
     </div>
-
-    <!-- 项目 1 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">1</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3178c6"></span>
-        <span class="project-name">meta/astryx</span>
-      </div>
-      <div class="stars-badge">+13.7k ⭐ 本周</div>
-      <p class="project-desc">Meta 开源的可定制设计系统，专为 AI Agent 时代打造</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">28.2k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">2.2k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">TypeScript</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Meta 出品，Agent 原生设计系统</div>
-      </div>
+    <div class="footer">
+        <p>数据来源：GitHub Trending · 由 Hermes Agent 自动生成</p>
     </div>
-    <!-- 项目 2 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">2</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3572A5"></span>
-        <span class="project-name">sherlock-project/sherlock</span>
-      </div>
-      <div class="stars-badge">+12.4k ⭐ 本周</div>
-      <p class="project-desc">跨社交网络追踪用户名，支持 4000+ 平台的 OSINT 神器</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">111.8k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">12.9k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Python</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">4000+ 平台用户名追踪利器</div>
-      </div>
-    </div>
-    <!-- 项目 3 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">3</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3178c6"></span>
-        <span class="project-name">pingdotgg/t3code</span>
-      </div>
-      <div class="stars-badge">+9.7k ⭐ 本周</div>
-      <p class="project-desc">从任何设备远程控制 Claude Code、Codex 等编程 Agent</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">60.6k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">10.9k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">TypeScript</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">手机也能操控编程 Agent</div>
-      </div>
-    </div>
-    <!-- 项目 4 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">4</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#f1e05a"></span>
-        <span class="project-name">cloudflare/security-audit-skill</span>
-      </div>
-      <div class="stars-badge">+7.6k ⭐ 本周</div>
-      <p class="project-desc">Cloudflare 出品的编程 Agent 安全审计技能，多阶段扫描+机器可读报告</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">72.7k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">4.9k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">JavaScript</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Cloudflare 安全审计 Agent 技能</div>
-      </div>
-    </div>
-    <!-- 项目 5 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">5</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3178c6"></span>
-        <span class="project-name">milind-soni/OpenMausBot</span>
-      </div>
-      <div class="stars-badge">+6.4k ⭐ 本周</div>
-      <p class="project-desc">开源 Grok Bot 替代品，为 Bot 提供虚拟机沙箱运行环境</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">22.8k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">3.2k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">TypeScript</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">带虚拟机的开源 Bot 平台</div>
-      </div>
-    </div>
-    <!-- 项目 6 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">6</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3572A5"></span>
-        <span class="project-name">anthropics/skills</span>
-      </div>
-      <div class="stars-badge">+6.2k ⭐ 本周</div>
-      <p class="project-desc">Anthropic 官方 Agent 技能仓库，为 AI 编程 Agent 提供生产级能力</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">194.6k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">22.9k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Python</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Anthropic 官方 Agent 技能库</div>
-      </div>
-    </div>
-    <!-- 项目 7 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">7</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3572A5"></span>
-        <span class="project-name">google/elephant-goldfish-model</span>
-      </div>
-      <div class="stars-badge">+5.5k ⭐ 本周</div>
-      <p class="project-desc">Google 开源的 Agent 辅助软件设计与评审插件</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">19.2k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">1.4k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Python</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">Google 出品 Agent 设计评审</div>
-      </div>
-    </div>
-    <!-- 项目 8 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">8</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#dea584"></span>
-        <span class="project-name">vercel-labs/agent-desktop</span>
-      </div>
-      <div class="stars-badge">+5.2k ⭐ 本周</div>
-      <p class="project-desc">Vercel 出品的 AI Agent 桌面操控 CLI 工具</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">23.8k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">1.8k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Rust</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">AI Agent 桌面操控 CLI</div>
-      </div>
-    </div>
-    <!-- 项目 9 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">9</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#dea584"></span>
-        <span class="project-name">vercel-labs/agent-browser</span>
-      </div>
-      <div class="stars-badge">+4.6k ⭐ 本周</div>
-      <p class="project-desc">Vercel 出品的 AI Agent 浏览器自动化 CLI 工具</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">51.2k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">3.6k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Rust</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">AI Agent 浏览器自动化 CLI</div>
-      </div>
-    </div>
-    <!-- 项目 10 -->
-    <div class="slide slide-project">
-      <div class="rank-watermark">10</div>
-      <div class="project-header">
-        <span class="lang-dot" style="background:#3572A5"></span>
-        <span class="project-name">ZhuLinsen/daily_stock_analysis</span>
-      </div>
-      <div class="stars-badge">+4.5k ⭐ 本周</div>
-      <p class="project-desc">LLM 驱动的多市场股票分析系统，集成行情、新闻、看板与自动推送</p>
-      <div class="project-stats">
-        <div class="stat">
-          <span class="stat-label">总 Stars</span>
-          <span class="stat-value">72.3k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Forks</span>
-          <span class="stat-value">57.5k</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">语言</span>
-          <span class="stat-value">Python</span>
-        </div>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-title">✨ 亮点</div>
-        <div class="highlight-text">LLM 驱动零成本股票分析</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 页码指示器 -->
-  <div class="indicators" id="indicators">
-    <div class="indicator active"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-    <div class="indicator"></div>
-  </div>
-</div>
-
-<script>
-  const slides = document.getElementById('slides');
-  const indicators = document.getElementById('indicators');
-  const totalSlides = 11;
-  let currentSlide = 0;
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  function updateSlide() {
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-    updateIndicators();
-  }
-
-  function updateIndicators() {
-    const dots = indicators.querySelectorAll('.indicator');
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-  }
-
-  function nextSlide() {
-    if (currentSlide < totalSlides - 1) {
-      currentSlide++;
-      updateSlide();
-    }
-  }
-
-  function prevSlide() {
-    if (currentSlide > 0) {
-      currentSlide--;
-      updateSlide();
-    }
-  }
-
-  // 触摸滑动
-  document.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  document.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-
-  function handleSwipe() {
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) nextSlide();
-      else prevSlide();
-    }
-  }
-
-  // 键盘导航
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
-  });
-
-  // 鼠标滚轮
-  let wheelTimeout;
-  document.addEventListener('wheel', e => {
-    clearTimeout(wheelTimeout);
-    wheelTimeout = setTimeout(() => {
-      if (e.deltaY > 0) nextSlide();
-      else prevSlide();
-    }, 50);
-  }, { passive: true });
-</script>
 </body>
 </html>
