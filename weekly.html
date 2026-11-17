@@ -3,177 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub 本周精选 Top 10</title>
+    <title>GitHub 本周精选 Top 10 · 2026-11-17</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
-        .container { max-width: 900px; margin: 0 auto; }
-        h1 { color: #fff; text-align: center; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .subtitle { color: rgba(255,255,255,0.9); text-align: center; font-size: 1.1em; margin-bottom: 40px; }
-        .card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.15); }
-        .rank { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; width: 36px; height: 36px; border-radius: 50%; text-align: center; line-height: 36px; font-weight: bold; margin-right: 12px; }
-        .header { display: flex; align-items: center; margin-bottom: 12px; }
-        .name { font-size: 1.3em; font-weight: 600; color: #24292e; }
-        .name a { color: inherit; text-decoration: none; }
-        .name a:hover { color: #667eea; }
-        .desc { color: #57606a; font-size: 0.95em; line-height: 1.6; margin-bottom: 12px; }
-        .desc-zh { color: #24292e; font-size: 0.95em; line-height: 1.6; margin-bottom: 12px; padding: 10px 14px; background: #f6f8fa; border-radius: 8px; border-left: 3px solid #667eea; }
-        .highlight { display: inline-block; background: #fff3cd; color: #856404; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 500; margin-bottom: 12px; }
-        .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.85em; color: #57606a; }
-        .meta span { display: flex; align-items: center; gap: 4px; }
-        .lang { background: #f1f3f5; padding: 2px 8px; border-radius: 12px; }
-        .stars-week { color: #e36209; font-weight: 600; }
-        .footer { text-align: center; color: rgba(255,255,255,0.8); margin-top: 40px; font-size: 0.9em; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .rank {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 50px;
+            text-align: center;
+        }
+        .item-content {
+            flex: 1;
+            margin-left: 15px;
+        }
+        .item-header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .item-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        .item-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .item-name a:hover {
+            color: #667eea;
+        }
+        .stars-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .lang-badge {
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            margin-left: 8px;
+        }
+        .desc {
+            color: #6c757d;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+        .desc-zh {
+            color: #495057;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.6em; }
+            .item { flex-direction: column; }
+            .rank { margin-bottom: 10px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 GitHub 本周精选 Top 10</h1>
-        <p class="subtitle">github.com · 更新于 2026-11-16</p>
-        <div class="card">
-            <div class="header">
-                <span class="rank">1</span>
-                <span class="name"><a href="https://github.com/meta/astryx" target="_blank">meta/astryx</a></span>
+        <div class="header">
+            <h1>📊 GitHub 本周精选 Top 10</h1>
+            <p>2026-11-17</p>
+        </div>
+        <div class="content">
+            <div class="item">
+                <div class="rank">#1</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/meta/astryx" target="_blank">meta/astryx</a></span>
+                        <span class="stars-badge">+10,939 ⭐</span>
+                        <span class="lang-badge">TypeScript</span>
+                        <span class="highlight">AI原生设计系统</span>
+                    </div>
+                    <div class="desc">An open source design system that's fully customizable and agent ready</div>
+                    <div class="desc-zh">Meta开源的可完全自定义的Agent就绪设计系统</div>
+                </div>
             </div>
-            <div class="desc-zh">Meta 开源的可定制设计系统，支持 AI Agent 集成，提供完整的组件库和设计工具链</div>
-            <div class="highlight">✨ Meta 出品，Agent 原生设计系统</div>
-            <div class="meta">
-                <span class="lang">TypeScript</span>
-                <span>⭐ 28,924</span>
-                <span class="stars-week">🔥 +13,501 this week</span>
-                <span>🍴 2,256</span>
+            <div class="item">
+                <div class="rank">#2</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/pingdotgg/t3code" target="_blank">pingdotgg/t3code</a></span>
+                        <span class="stars-badge">+8,993 ⭐</span>
+                        <span class="lang-badge">TypeScript</span>
+                        <span class="highlight">远程AI编程控制</span>
+                    </div>
+                    <div class="desc">The best way to control Claude Code, Codex and more from any computer or phone</div>
+                    <div class="desc-zh">从任何电脑或手机控制Claude Code、Codex等AI编程工具</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#3</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/sherlock-project/sherlock" target="_blank">sherlock-project/sherlock</a></span>
+                        <span class="stars-badge">+7,067 ⭐</span>
+                        <span class="lang-badge">Python</span>
+                        <span class="highlight">社交账号追踪神器</span>
+                    </div>
+                    <div class="desc">Hunt down social media accounts by username across social networks</div>
+                    <div class="desc-zh">跨社交网络追踪用户名账号的工具</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#4</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/GoogleChrome/modern-web-guidance-src" target="_blank">GoogleChrome/modern-web-guidance-src</a></span>
+                        <span class="stars-badge">+6,542 ⭐</span>
+                        <span class="lang-badge">TypeScript</span>
+                        <span class="highlight">Web最佳实践指南</span>
+                    </div>
+                    <div class="desc">Keep your coding agent up to date with the latest web best practices</div>
+                    <div class="desc-zh">让AI编程代理掌握最新Web最佳实践</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#5</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a></span>
+                        <span class="stars-badge">+5,666 ⭐</span>
+                        <span class="lang-badge">Python</span>
+                        <span class="highlight">官方Agent技能库</span>
+                    </div>
+                    <div class="desc">Public repository for Agent Skills</div>
+                    <div class="desc-zh">Anthropic官方Agent Skills公开仓库</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#6</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/dream-num/univer" target="_blank">dream-num/univer</a></span>
+                        <span class="stars-badge">+4,765 ⭐</span>
+                        <span class="lang-badge">TypeScript</span>
+                        <span class="highlight">AI办公开源框架</span>
+                    </div>
+                    <div class="desc">Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents.</div>
+                    <div class="desc-zh">构建AI办公套件，支持编辑、计算、协作和文件处理</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#7</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/milind-soni/OpenMausBot" target="_blank">milind-soni/OpenMausBot</a></span>
+                        <span class="stars-badge">+4,737 ⭐</span>
+                        <span class="lang-badge">TypeScript</span>
+                        <span class="highlight">开源AI Bot替代</span>
+                    </div>
+                    <div class="desc">Open-source Grok Bot alternative with a virtual machine that bots can use</div>
+                    <div class="desc-zh">开源Grok Bot替代品，支持虚拟机运行Bot</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#8</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/we-promise/sure" target="_blank">we-promise/sure</a></span>
+                        <span class="stars-badge">+4,679 ⭐</span>
+                        <span class="lang-badge">Ruby</span>
+                        <span class="highlight">全民理财应用</span>
+                    </div>
+                    <div class="desc">The personal finance app for everyone (by everyone)</div>
+                    <div class="desc-zh">面向所有人的个人理财应用</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#9</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/vercel-labs/agent-desktop" target="_blank">vercel-labs/agent-desktop</a></span>
+                        <span class="stars-badge">+4,451 ⭐</span>
+                        <span class="lang-badge">Rust</span>
+                        <span class="highlight">桌面自动化CLI</span>
+                    </div>
+                    <div class="desc">Computer use CLI for AI agents</div>
+                    <div class="desc-zh">AI代理的桌面自动化CLI工具</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="rank">#10</div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="item-name"><a href="https://github.com/Leonxlnx/taste-skill" target="_blank">Leonxlnx/taste-skill</a></span>
+                        <span class="stars-badge">+4,442 ⭐</span>
+                        <span class="lang-badge">JavaScript</span>
+                        <span class="highlight">热门项目</span>
+                    </div>
+                    <div class="desc">Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages</div>
+                    <div class="desc-zh">Agent skills that give coding agents taste: art di...</div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">2</span>
-                <span class="name"><a href="https://github.com/sherlock-project/sherlock" target="_blank">sherlock-project/sherlock</a></span>
-            </div>
-            <div class="desc-zh">跨社交网络用户名追踪工具，可在数百个平台上搜索特定用户名的账号</div>
-            <div class="highlight">✨ 社媒账号追踪神器，老牌项目</div>
-            <div class="meta">
-                <span class="lang">Python</span>
-                <span>⭐ 112,522</span>
-                <span class="stars-week">🔥 +10,412 this week</span>
-                <span>🍴 12,990</span>
-            </div>
+        <div class="footer">
+            <p>数据来源：GitHub Trending · 自动生成于 2026-11-17</p>
+            <p>在线查看：<a href="https://damsform.github.io/weekly.html">https://damsform.github.io/weekly.html</a></p>
         </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">3</span>
-                <span class="name"><a href="https://github.com/pingdotgg/t3code" target="_blank">pingdotgg/t3code</a></span>
-            </div>
-            <div class="desc-zh">从任意设备远程控制 Claude Code、Codex 等 AI 编程工具的统一界面</div>
-            <div class="highlight">✨ 多端远程控制 AI 编程助手</div>
-            <div class="meta">
-                <span class="lang">TypeScript</span>
-                <span>⭐ 61,601</span>
-                <span class="stars-week">🔥 +9,260 this week</span>
-                <span>🍴 11,040</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">4</span>
-                <span class="name"><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a></span>
-            </div>
-            <div class="desc-zh">Anthropic 官方 Agent Skills 仓库，提供标准化的 AI 代理技能集合</div>
-            <div class="highlight">✨ Anthropic 官方技能库</div>
-            <div class="meta">
-                <span class="lang">Python</span>
-                <span>⭐ 195,401</span>
-                <span class="stars-week">🔥 +6,077 this week</span>
-                <span>🍴 22,967</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">5</span>
-                <span class="name"><a href="https://github.com/GoogleChrome/modern-web-guidance-src" target="_blank">GoogleChrome/modern-web-guidance-src</a></span>
-            </div>
-            <div class="desc-zh">Google Chrome 团队出品，让 AI 编程助手掌握最新 Web 最佳实践的技能包</div>
-            <div class="highlight">✨ Google 官方 Web 最佳实践</div>
-            <div class="meta">
-                <span class="lang">TypeScript</span>
-                <span>⭐ 7,242</span>
-                <span class="stars-week">🔥 +5,692 this week</span>
-                <span>🍴 605</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">6</span>
-                <span class="name"><a href="https://github.com/milind-soni/OpenMausBot" target="_blank">milind-soni/OpenMausBot</a></span>
-            </div>
-            <div class="desc-zh">开源 Grok Bot 替代品，提供虚拟机环境供 AI 机器人安全运行</div>
-            <div class="highlight">✨ 开源 Grok 替代，带虚拟机</div>
-            <div class="meta">
-                <span class="lang">TypeScript</span>
-                <span>⭐ 23,456</span>
-                <span class="stars-week">🔥 +5,463 this week</span>
-                <span>🍴 3,261</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">7</span>
-                <span class="name"><a href="https://github.com/google/elephant-goldfish-model" target="_blank">google/elephant-goldfish-model</a></span>
-            </div>
-            <div class="desc-zh">Google 开源的 AI 辅助软件设计与代码审查插件</div>
-            <div class="highlight">✨ Google 开源 AI 代码审查插件</div>
-            <div class="meta">
-                <span class="lang">Python</span>
-                <span>⭐ 19,809</span>
-                <span class="stars-week">🔥 +5,060 this week</span>
-                <span>🍴 1,467</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">8</span>
-                <span class="name"><a href="https://github.com/vercel-labs/agent-desktop" target="_blank">vercel-labs/agent-desktop</a></span>
-            </div>
-            <div class="desc-zh">Vercel 出品的 AI 代理桌面控制 CLI，让 AI 能操作电脑完成任务</div>
-            <div class="highlight">✨ Vercel AI 桌面控制工具</div>
-            <div class="meta">
-                <span class="lang">Rust</span>
-                <span>⭐ 24,216</span>
-                <span class="stars-week">🔥 +4,719 this week</span>
-                <span>🍴 1,799</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">9</span>
-                <span class="name"><a href="https://github.com/we-promise/sure" target="_blank">we-promise/sure</a></span>
-            </div>
-            <div class="desc-zh">面向所有人的个人理财应用，开源社区驱动的财务管理工具</div>
-            <div class="highlight">✨ 开源个人理财应用</div>
-            <div class="meta">
-                <span class="lang">Ruby</span>
-                <span>⭐ 15,728</span>
-                <span class="stars-week">🔥 +4,556 this week</span>
-                <span>🍴 1,377</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <span class="rank">10</span>
-                <span class="name"><a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank">ZhuLinsen/daily_stock_analysis</a></span>
-            </div>
-            <div class="desc-zh">LLM 驱动的多市场股票智能分析系统，支持多源行情、实时新闻、决策看板与自动推送</div>
-            <div class="highlight">✨ AI 股票分析，零成本运行</div>
-            <div class="meta">
-                <span class="lang">Python</span>
-                <span>⭐ 72,533</span>
-                <span class="stars-week">🔥 +4,548 this week</span>
-                <span>🍴 57,577</span>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <p>数据来源：GitHub Trending · 由 Hermes Agent 自动生成</p>
     </div>
 </body>
 </html>
